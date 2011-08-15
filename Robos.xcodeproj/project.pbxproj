@@ -1,0 +1,283 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EB3FA2EC13F9CB59009975E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3FA2EB13F9CB59009975E5 /* UIKit.framework */; };
+		EB3FA2EE13F9CB59009975E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3FA2ED13F9CB59009975E5 /* Foundation.framework */; };
+		EB3FA2F013F9CB59009975E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3FA2EF13F9CB59009975E5 /* CoreGraphics.framework */; };
+		EB3FA2F613F9CB59009975E5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB3FA2F413F9CB59009975E5 /* InfoPlist.strings */; };
+		EB3FA2F913F9CB59009975E5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FA2F813F9CB59009975E5 /* main.m */; };
+		EB3FA2FC13F9CB59009975E5 /* RobosAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FA2FB13F9CB59009975E5 /* RobosAppDelegate.m */; };
+		EB3FA2FF13F9CB59009975E5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3FA2FD13F9CB59009975E5 /* MainWindow.xib */; };
+		EB3FA30213F9CB59009975E5 /* RobosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FA30113F9CB59009975E5 /* RobosViewController.m */; };
+		EB3FA30513F9CB59009975E5 /* RobosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3FA30313F9CB59009975E5 /* RobosViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EB3FA2E713F9CB59009975E5 /* Robos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Robos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB3FA2EB13F9CB59009975E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EB3FA2ED13F9CB59009975E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EB3FA2EF13F9CB59009975E5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EB3FA2F313F9CB59009975E5 /* Robos-Info.plist */ = {isa = PBXFileReference; path = "Robos-Info.plist"; sourceTree = "<group>"; };
+		EB3FA2F513F9CB59009975E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EB3FA2F713F9CB59009975E5 /* Robos-Prefix.pch */ = {isa = PBXFileReference; path = "Robos-Prefix.pch"; sourceTree = "<group>"; };
+		EB3FA2F813F9CB59009975E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EB3FA2FA13F9CB59009975E5 /* RobosAppDelegate.h */ = {isa = PBXFileReference; path = RobosAppDelegate.h; sourceTree = "<group>"; };
+		EB3FA2FB13F9CB59009975E5 /* RobosAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RobosAppDelegate.m; sourceTree = "<group>"; };
+		EB3FA2FE13F9CB59009975E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		EB3FA30013F9CB59009975E5 /* RobosViewController.h */ = {isa = PBXFileReference; path = RobosViewController.h; sourceTree = "<group>"; };
+		EB3FA30113F9CB59009975E5 /* RobosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RobosViewController.m; sourceTree = "<group>"; };
+		EB3FA30413F9CB59009975E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RobosViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EB3FA2E413F9CB59009975E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB3FA2EC13F9CB59009975E5 /* UIKit.framework in Frameworks */,
+				EB3FA2EE13F9CB59009975E5 /* Foundation.framework in Frameworks */,
+				EB3FA2F013F9CB59009975E5 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EB3FA2DC13F9CB59009975E5 = {
+			isa = PBXGroup;
+			children = (
+				EB3FA2F113F9CB59009975E5 /* Robos */,
+				EB3FA2EA13F9CB59009975E5 /* Frameworks */,
+				EB3FA2E813F9CB59009975E5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EB3FA2E813F9CB59009975E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FA2E713F9CB59009975E5 /* Robos.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB3FA2EA13F9CB59009975E5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FA2EB13F9CB59009975E5 /* UIKit.framework */,
+				EB3FA2ED13F9CB59009975E5 /* Foundation.framework */,
+				EB3FA2EF13F9CB59009975E5 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EB3FA2F113F9CB59009975E5 /* Robos */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FA2FA13F9CB59009975E5 /* RobosAppDelegate.h */,
+				EB3FA2FB13F9CB59009975E5 /* RobosAppDelegate.m */,
+				EB3FA2FD13F9CB59009975E5 /* MainWindow.xib */,
+				EB3FA30013F9CB59009975E5 /* RobosViewController.h */,
+				EB3FA30113F9CB59009975E5 /* RobosViewController.m */,
+				EB3FA30313F9CB59009975E5 /* RobosViewController.xib */,
+				EB3FA2F213F9CB59009975E5 /* Supporting Files */,
+			);
+			path = Robos;
+			sourceTree = "<group>";
+		};
+		EB3FA2F213F9CB59009975E5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FA2F313F9CB59009975E5 /* Robos-Info.plist */,
+				EB3FA2F413F9CB59009975E5 /* InfoPlist.strings */,
+				EB3FA2F713F9CB59009975E5 /* Robos-Prefix.pch */,
+				EB3FA2F813F9CB59009975E5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EB3FA2E613F9CB59009975E5 /* Robos */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB3FA30813F9CB59009975E5 /* Build configuration list for PBXNativeTarget "Robos" */;
+			buildPhases = (
+				EB3FA2E313F9CB59009975E5 /* Sources */,
+				EB3FA2E413F9CB59009975E5 /* Frameworks */,
+				EB3FA2E513F9CB59009975E5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Robos;
+			productName = Robos;
+			productReference = EB3FA2E713F9CB59009975E5 /* Robos.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EB3FA2DE13F9CB59009975E5 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = EB3FA2E113F9CB59009975E5 /* Build configuration list for PBXProject "Robos" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EB3FA2DC13F9CB59009975E5;
+			productRefGroup = EB3FA2E813F9CB59009975E5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EB3FA2E613F9CB59009975E5 /* Robos */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EB3FA2E513F9CB59009975E5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB3FA2F613F9CB59009975E5 /* InfoPlist.strings in Resources */,
+				EB3FA2FF13F9CB59009975E5 /* MainWindow.xib in Resources */,
+				EB3FA30513F9CB59009975E5 /* RobosViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EB3FA2E313F9CB59009975E5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB3FA2F913F9CB59009975E5 /* main.m in Sources */,
+				EB3FA2FC13F9CB59009975E5 /* RobosAppDelegate.m in Sources */,
+				EB3FA30213F9CB59009975E5 /* RobosViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EB3FA2F413F9CB59009975E5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB3FA2F513F9CB59009975E5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		EB3FA2FD13F9CB59009975E5 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB3FA2FE13F9CB59009975E5 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		EB3FA30313F9CB59009975E5 /* RobosViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EB3FA30413F9CB59009975E5 /* en */,
+			);
+			name = RobosViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EB3FA30613F9CB59009975E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EB3FA30713F9CB59009975E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		EB3FA30913F9CB59009975E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Robos/Robos-Prefix.pch";
+				INFOPLIST_FILE = "Robos/Robos-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EB3FA30A13F9CB59009975E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Robos/Robos-Prefix.pch";
+				INFOPLIST_FILE = "Robos/Robos-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EB3FA2E113F9CB59009975E5 /* Build configuration list for PBXProject "Robos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB3FA30613F9CB59009975E5 /* Debug */,
+				EB3FA30713F9CB59009975E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB3FA30813F9CB59009975E5 /* Build configuration list for PBXNativeTarget "Robos" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EB3FA30913F9CB59009975E5 /* Debug */,
+				EB3FA30A13F9CB59009975E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EB3FA2DE13F9CB59009975E5 /* Project object */;
+}
