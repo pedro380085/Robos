@@ -46,7 +46,7 @@
 
 - (void)viewDidLoad
 {
-    ultimoIndex = [NSIndexPath indexPathForRow:[[info objectForKey:VALOR] integerValue] inSection:0];
+    ultimoIndex = [[NSIndexPath indexPathForRow:[[info objectForKey:VALOR] integerValue] inSection:0] retain];
     
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pronto)] autorelease];
     
