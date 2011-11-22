@@ -14,14 +14,14 @@
 
 
 @synthesize window=_window;
-
+@synthesize navController=_navController;
 @synthesize viewController=_viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
      
-    self.window.rootViewController = self.viewController;
+    self.window.rootViewController = self.navController;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -36,6 +36,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    [self.viewController salvarDados];
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -63,6 +64,8 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    
+    [self.viewController salvarDados];
 }
 
 - (void)dealloc

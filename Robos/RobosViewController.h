@@ -7,9 +7,37 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface RobosViewController : UIViewController {
+#import "Constantes.h"
+#import "Protocolos.h"
+#import "CompiladorViewController.h"
+#import "CaixaViewController.h"
+#import "CondicionalController.h"
+#import "ComandosOpcoesController.h"
+
+@class CaixaViewController;
+
+@interface RobosViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, CaixaViewDelegate> {
+    IBOutlet UITableView *tabela;
+    IBOutlet UIBarButtonItem *botaoModoLeitura;
+    CaixaViewController * caixaComandos;
+    NSMutableArray * comandos;
+    NSDictionary * dicionarioComandos;
+    NSArray * dicionarioUnidades;
     
+    BOOL modoLeitura;
+
 }
+
+@property (nonatomic, retain) NSMutableArray * comandos;
+@property (nonatomic, retain) NSDictionary * dicionarioComandos;
+@property (nonatomic, retain) NSArray * dicionarioUnidades;
+
+- (NSString *) nomeParaTag: (NSInteger) tag;
+- (void)salvarDados;
+- (void)carregarDados;
+- (IBAction)executarTocado;
+- (IBAction)leituraTocado;
 
 @end

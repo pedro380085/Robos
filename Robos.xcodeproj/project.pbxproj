@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB004CD61443E3EE00CF281E /* CaixaSensoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB004CD41443E3ED00CF281E /* CaixaSensoresViewController.m */; };
+		EB004CD71443E3EE00CF281E /* CaixaSensoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB004CD51443E3ED00CF281E /* CaixaSensoresViewController.xib */; };
+		EB004CE31443E73700CF281E /* 128-HardwareChip.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004CDF1443E73700CF281E /* 128-HardwareChip.png */; };
+		EB004CE41443E73700CF281E /* 128-sensors-applet.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004CE01443E73700CF281E /* 128-sensors-applet.png */; };
+		EB004CE51443E73700CF281E /* 128-traffic_lights.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004CE11443E73700CF281E /* 128-traffic_lights.png */; };
+		EB004D0714446ED200CF281E /* 48-HardwareChip.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004D0614446ED200CF281E /* 48-HardwareChip.png */; };
+		EB2DE0E1144B57D5005FC8AC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB2DE0E0144B57D5005FC8AC /* Settings.bundle */; };
+		EB2DE120144B5E1F005FC8AC /* CompiladorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2DE11E144B5E1F005FC8AC /* CompiladorViewController.m */; };
+		EB2DE121144B5E1F005FC8AC /* CompiladorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB2DE11F144B5E1F005FC8AC /* CompiladorViewController.xib */; };
 		EB3FA2EC13F9CB59009975E5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3FA2EB13F9CB59009975E5 /* UIKit.framework */; };
 		EB3FA2EE13F9CB59009975E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3FA2ED13F9CB59009975E5 /* Foundation.framework */; };
 		EB3FA2F013F9CB59009975E5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3FA2EF13F9CB59009975E5 /* CoreGraphics.framework */; };
@@ -16,23 +25,79 @@
 		EB3FA2FF13F9CB59009975E5 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3FA2FD13F9CB59009975E5 /* MainWindow.xib */; };
 		EB3FA30213F9CB59009975E5 /* RobosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FA30113F9CB59009975E5 /* RobosViewController.m */; };
 		EB3FA30513F9CB59009975E5 /* RobosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3FA30313F9CB59009975E5 /* RobosViewController.xib */; };
+		EB3FA32913F9D517009975E5 /* CaixaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FA32713F9D517009975E5 /* CaixaViewController.m */; };
+		EB3FA32A13F9D517009975E5 /* CaixaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3FA32813F9D517009975E5 /* CaixaViewController.xib */; };
+		EB3FA34C13F9D9E9009975E5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3FA34B13F9D9E9009975E5 /* QuartzCore.framework */; };
+		EB41753B13FAA321008D8343 /* ComandosOpcoesController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41753A13FAA321008D8343 /* ComandosOpcoesController.m */; };
+		EB41753E13FAA93E008D8343 /* ValorOpcoesController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41753D13FAA93E008D8343 /* ValorOpcoesController.m */; };
+		EB4B8E141448D09D0070DBD7 /* 48-warning.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E111448D09D0070DBD7 /* 48-warning.png */; };
+		EB4B8E151448D09D0070DBD7 /* 48-help.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E121448D09D0070DBD7 /* 48-help.png */; };
+		EB4B8E161448D09D0070DBD7 /* 48-cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E131448D09D0070DBD7 /* 48-cancel.png */; };
+		EB4B8E2E1448D0D00070DBD7 /* 48-arrow-right.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E201448D0D00070DBD7 /* 48-arrow-right.png */; };
+		EB4B8E2F1448D0D00070DBD7 /* 48-arrow-up.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E211448D0D00070DBD7 /* 48-arrow-up.png */; };
+		EB4B8E301448D0D00070DBD7 /* 48-badge-minus.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E221448D0D00070DBD7 /* 48-badge-minus.png */; };
+		EB4B8E321448D0D00070DBD7 /* 48-arrow-down.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E241448D0D00070DBD7 /* 48-arrow-down.png */; };
+		EB4B8E331448D0D00070DBD7 /* 48-arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E251448D0D00070DBD7 /* 48-arrow-left.png */; };
+		EBB6981B14081FBD00D87E0F /* CondicionalController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB6981A14081FBD00D87E0F /* CondicionalController.m */; };
+		EBD1EE8F13FAC0AF004FEDFC /* UnidadeOpcoesController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBD1EE8E13FAC0AF004FEDFC /* UnidadeOpcoesController.m */; };
+		EBD35F97147BB9E300AB65EF /* 57-Lionel_Preacherbot.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD35F95147BB9E300AB65EF /* 57-Lionel_Preacherbot.png */; };
+		EBD35F98147BB9E300AB65EF /* 114-Lionel_Preacherbot.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD35F96147BB9E300AB65EF /* 114-Lionel_Preacherbot.png */; };
+		EBD91BD7144D22B800137C04 /* 48-badge-check.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD91BD5144D22B800137C04 /* 48-badge-check.png */; };
+		EBD91BD8144D22B800137C04 /* 48-badge-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD91BD6144D22B800137C04 /* 48-badge-cross.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB004CD31443E3ED00CF281E /* CaixaSensoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaixaSensoresViewController.h; sourceTree = "<group>"; };
+		EB004CD41443E3ED00CF281E /* CaixaSensoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaixaSensoresViewController.m; sourceTree = "<group>"; };
+		EB004CD51443E3ED00CF281E /* CaixaSensoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CaixaSensoresViewController.xib; path = Robos/CaixaSensoresViewController.xib; sourceTree = "<group>"; };
+		EB004CDF1443E73700CF281E /* 128-HardwareChip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "128-HardwareChip.png"; sourceTree = "<group>"; };
+		EB004CE01443E73700CF281E /* 128-sensors-applet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "128-sensors-applet.png"; sourceTree = "<group>"; };
+		EB004CE11443E73700CF281E /* 128-traffic_lights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "128-traffic_lights.png"; sourceTree = "<group>"; };
+		EB004D0614446ED200CF281E /* 48-HardwareChip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-HardwareChip.png"; sourceTree = "<group>"; };
+		EB2DE0E0144B57D5005FC8AC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		EB2DE11D144B5E1F005FC8AC /* CompiladorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompiladorViewController.h; sourceTree = "<group>"; };
+		EB2DE11E144B5E1F005FC8AC /* CompiladorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompiladorViewController.m; sourceTree = "<group>"; };
+		EB2DE11F144B5E1F005FC8AC /* CompiladorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CompiladorViewController.xib; path = Robos/CompiladorViewController.xib; sourceTree = "<group>"; };
 		EB3FA2E713F9CB59009975E5 /* Robos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Robos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3FA2EB13F9CB59009975E5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EB3FA2ED13F9CB59009975E5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EB3FA2EF13F9CB59009975E5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		EB3FA2F313F9CB59009975E5 /* Robos-Info.plist */ = {isa = PBXFileReference; path = "Robos-Info.plist"; sourceTree = "<group>"; };
+		EB3FA2F313F9CB59009975E5 /* Robos-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Robos-Info.plist"; sourceTree = "<group>"; };
 		EB3FA2F513F9CB59009975E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		EB3FA2F713F9CB59009975E5 /* Robos-Prefix.pch */ = {isa = PBXFileReference; path = "Robos-Prefix.pch"; sourceTree = "<group>"; };
+		EB3FA2F713F9CB59009975E5 /* Robos-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Robos-Prefix.pch"; sourceTree = "<group>"; };
 		EB3FA2F813F9CB59009975E5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EB3FA2FA13F9CB59009975E5 /* RobosAppDelegate.h */ = {isa = PBXFileReference; path = RobosAppDelegate.h; sourceTree = "<group>"; };
+		EB3FA2FA13F9CB59009975E5 /* RobosAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobosAppDelegate.h; sourceTree = "<group>"; };
 		EB3FA2FB13F9CB59009975E5 /* RobosAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RobosAppDelegate.m; sourceTree = "<group>"; };
 		EB3FA2FE13F9CB59009975E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		EB3FA30013F9CB59009975E5 /* RobosViewController.h */ = {isa = PBXFileReference; path = RobosViewController.h; sourceTree = "<group>"; };
+		EB3FA30013F9CB59009975E5 /* RobosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RobosViewController.h; sourceTree = "<group>"; };
 		EB3FA30113F9CB59009975E5 /* RobosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RobosViewController.m; sourceTree = "<group>"; };
 		EB3FA30413F9CB59009975E5 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/RobosViewController.xib; sourceTree = "<group>"; };
+		EB3FA32613F9D517009975E5 /* CaixaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaixaViewController.h; sourceTree = "<group>"; };
+		EB3FA32713F9D517009975E5 /* CaixaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaixaViewController.m; sourceTree = "<group>"; };
+		EB3FA32813F9D517009975E5 /* CaixaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CaixaViewController.xib; path = Robos/CaixaViewController.xib; sourceTree = "<group>"; };
+		EB3FA34B13F9D9E9009975E5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		EB3FA34D13F9E3E2009975E5 /* Constantes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constantes.h; sourceTree = "<group>"; };
+		EB41753913FAA321008D8343 /* ComandosOpcoesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComandosOpcoesController.h; path = Robos.xcodeproj/ComandosOpcoesController.h; sourceTree = SOURCE_ROOT; };
+		EB41753A13FAA321008D8343 /* ComandosOpcoesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComandosOpcoesController.m; path = Robos.xcodeproj/ComandosOpcoesController.m; sourceTree = SOURCE_ROOT; };
+		EB41753C13FAA93E008D8343 /* ValorOpcoesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValorOpcoesController.h; sourceTree = "<group>"; };
+		EB41753D13FAA93E008D8343 /* ValorOpcoesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValorOpcoesController.m; sourceTree = "<group>"; };
+		EB4B8E111448D09D0070DBD7 /* 48-warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-warning.png"; sourceTree = "<group>"; };
+		EB4B8E121448D09D0070DBD7 /* 48-help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-help.png"; sourceTree = "<group>"; };
+		EB4B8E131448D09D0070DBD7 /* 48-cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-cancel.png"; sourceTree = "<group>"; };
+		EB4B8E201448D0D00070DBD7 /* 48-arrow-right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-arrow-right.png"; sourceTree = "<group>"; };
+		EB4B8E211448D0D00070DBD7 /* 48-arrow-up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-arrow-up.png"; sourceTree = "<group>"; };
+		EB4B8E221448D0D00070DBD7 /* 48-badge-minus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-badge-minus.png"; sourceTree = "<group>"; };
+		EB4B8E241448D0D00070DBD7 /* 48-arrow-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-arrow-down.png"; sourceTree = "<group>"; };
+		EB4B8E251448D0D00070DBD7 /* 48-arrow-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-arrow-left.png"; sourceTree = "<group>"; };
+		EB56E8A814018293001880BC /* Protocolos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocolos.h; sourceTree = "<group>"; };
+		EBB6981914081FBD00D87E0F /* CondicionalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CondicionalController.h; sourceTree = "<group>"; };
+		EBB6981A14081FBD00D87E0F /* CondicionalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CondicionalController.m; sourceTree = "<group>"; };
+		EBD1EE8D13FAC0AF004FEDFC /* UnidadeOpcoesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnidadeOpcoesController.h; sourceTree = "<group>"; };
+		EBD1EE8E13FAC0AF004FEDFC /* UnidadeOpcoesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnidadeOpcoesController.m; sourceTree = "<group>"; };
+		EBD35F95147BB9E300AB65EF /* 57-Lionel_Preacherbot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "57-Lionel_Preacherbot.png"; sourceTree = "<group>"; };
+		EBD35F96147BB9E300AB65EF /* 114-Lionel_Preacherbot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "114-Lionel_Preacherbot.png"; sourceTree = "<group>"; };
+		EBD91BD5144D22B800137C04 /* 48-badge-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-badge-check.png"; sourceTree = "<group>"; };
+		EBD91BD6144D22B800137C04 /* 48-badge-cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-badge-cross.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,16 +108,55 @@
 				EB3FA2EC13F9CB59009975E5 /* UIKit.framework in Frameworks */,
 				EB3FA2EE13F9CB59009975E5 /* Foundation.framework in Frameworks */,
 				EB3FA2F013F9CB59009975E5 /* CoreGraphics.framework in Frameworks */,
+				EB3FA34C13F9D9E9009975E5 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB004C6714427C6200CF281E /* Imagens */ = {
+			isa = PBXGroup;
+			children = (
+				EBD35F95147BB9E300AB65EF /* 57-Lionel_Preacherbot.png */,
+				EBD35F96147BB9E300AB65EF /* 114-Lionel_Preacherbot.png */,
+				EB004CE01443E73700CF281E /* 128-sensors-applet.png */,
+				EB004CE11443E73700CF281E /* 128-traffic_lights.png */,
+				EB004CDF1443E73700CF281E /* 128-HardwareChip.png */,
+				EB004D0614446ED200CF281E /* 48-HardwareChip.png */,
+				EB4B8E111448D09D0070DBD7 /* 48-warning.png */,
+				EB4B8E121448D09D0070DBD7 /* 48-help.png */,
+				EB4B8E131448D09D0070DBD7 /* 48-cancel.png */,
+				EB4B8E201448D0D00070DBD7 /* 48-arrow-right.png */,
+				EB4B8E211448D0D00070DBD7 /* 48-arrow-up.png */,
+				EB4B8E221448D0D00070DBD7 /* 48-badge-minus.png */,
+				EB4B8E241448D0D00070DBD7 /* 48-arrow-down.png */,
+				EB4B8E251448D0D00070DBD7 /* 48-arrow-left.png */,
+				EBD91BD5144D22B800137C04 /* 48-badge-check.png */,
+				EBD91BD6144D22B800137C04 /* 48-badge-cross.png */,
+			);
+			name = Imagens;
+			sourceTree = "<group>";
+		};
+		EB004C6914427CC600CF281E /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FA2FD13F9CB59009975E5 /* MainWindow.xib */,
+				EB3FA30313F9CB59009975E5 /* RobosViewController.xib */,
+				EB2DE11F144B5E1F005FC8AC /* CompiladorViewController.xib */,
+				EB3FA32813F9D517009975E5 /* CaixaViewController.xib */,
+				EB004CD51443E3ED00CF281E /* CaixaSensoresViewController.xib */,
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
 		EB3FA2DC13F9CB59009975E5 = {
 			isa = PBXGroup;
 			children = (
-				EB3FA2F113F9CB59009975E5 /* Robos */,
+				EB3FA2F113F9CB59009975E5 /* Classes */,
+				EB004C6914427CC600CF281E /* Interfaces */,
+				EB004C6714427C6200CF281E /* Imagens */,
+				EB3FA2F213F9CB59009975E5 /* Supporting Files */,
 				EB3FA2EA13F9CB59009975E5 /* Frameworks */,
 				EB3FA2E813F9CB59009975E5 /* Products */,
 			);
@@ -69,6 +173,7 @@
 		EB3FA2EA13F9CB59009975E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB3FA34B13F9D9E9009975E5 /* QuartzCore.framework */,
 				EB3FA2EB13F9CB59009975E5 /* UIKit.framework */,
 				EB3FA2ED13F9CB59009975E5 /* Foundation.framework */,
 				EB3FA2EF13F9CB59009975E5 /* CoreGraphics.framework */,
@@ -76,29 +181,45 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		EB3FA2F113F9CB59009975E5 /* Robos */ = {
+		EB3FA2F113F9CB59009975E5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				EB3FA34D13F9E3E2009975E5 /* Constantes.h */,
+				EB56E8A814018293001880BC /* Protocolos.h */,
 				EB3FA2FA13F9CB59009975E5 /* RobosAppDelegate.h */,
 				EB3FA2FB13F9CB59009975E5 /* RobosAppDelegate.m */,
-				EB3FA2FD13F9CB59009975E5 /* MainWindow.xib */,
 				EB3FA30013F9CB59009975E5 /* RobosViewController.h */,
 				EB3FA30113F9CB59009975E5 /* RobosViewController.m */,
-				EB3FA30313F9CB59009975E5 /* RobosViewController.xib */,
-				EB3FA2F213F9CB59009975E5 /* Supporting Files */,
+				EB2DE11D144B5E1F005FC8AC /* CompiladorViewController.h */,
+				EB2DE11E144B5E1F005FC8AC /* CompiladorViewController.m */,
+				EB3FA32613F9D517009975E5 /* CaixaViewController.h */,
+				EB3FA32713F9D517009975E5 /* CaixaViewController.m */,
+				EB004CD31443E3ED00CF281E /* CaixaSensoresViewController.h */,
+				EB004CD41443E3ED00CF281E /* CaixaSensoresViewController.m */,
+				EBB6981914081FBD00D87E0F /* CondicionalController.h */,
+				EBB6981A14081FBD00D87E0F /* CondicionalController.m */,
+				EB41753913FAA321008D8343 /* ComandosOpcoesController.h */,
+				EB41753A13FAA321008D8343 /* ComandosOpcoesController.m */,
+				EB41753C13FAA93E008D8343 /* ValorOpcoesController.h */,
+				EB41753D13FAA93E008D8343 /* ValorOpcoesController.m */,
+				EBD1EE8D13FAC0AF004FEDFC /* UnidadeOpcoesController.h */,
+				EBD1EE8E13FAC0AF004FEDFC /* UnidadeOpcoesController.m */,
 			);
+			name = Classes;
 			path = Robos;
 			sourceTree = "<group>";
 		};
 		EB3FA2F213F9CB59009975E5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EB2DE0E0144B57D5005FC8AC /* Settings.bundle */,
 				EB3FA2F313F9CB59009975E5 /* Robos-Info.plist */,
 				EB3FA2F413F9CB59009975E5 /* InfoPlist.strings */,
 				EB3FA2F713F9CB59009975E5 /* Robos-Prefix.pch */,
 				EB3FA2F813F9CB59009975E5 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = Robos;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +247,9 @@
 /* Begin PBXProject section */
 		EB3FA2DE13F9CB59009975E5 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = EB3FA2E113F9CB59009975E5 /* Build configuration list for PBXProject "Robos" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -151,6 +275,26 @@
 				EB3FA2F613F9CB59009975E5 /* InfoPlist.strings in Resources */,
 				EB3FA2FF13F9CB59009975E5 /* MainWindow.xib in Resources */,
 				EB3FA30513F9CB59009975E5 /* RobosViewController.xib in Resources */,
+				EB3FA32A13F9D517009975E5 /* CaixaViewController.xib in Resources */,
+				EB004CD71443E3EE00CF281E /* CaixaSensoresViewController.xib in Resources */,
+				EB004CE31443E73700CF281E /* 128-HardwareChip.png in Resources */,
+				EB004CE41443E73700CF281E /* 128-sensors-applet.png in Resources */,
+				EB004CE51443E73700CF281E /* 128-traffic_lights.png in Resources */,
+				EB004D0714446ED200CF281E /* 48-HardwareChip.png in Resources */,
+				EB4B8E141448D09D0070DBD7 /* 48-warning.png in Resources */,
+				EB4B8E151448D09D0070DBD7 /* 48-help.png in Resources */,
+				EB4B8E161448D09D0070DBD7 /* 48-cancel.png in Resources */,
+				EB4B8E2E1448D0D00070DBD7 /* 48-arrow-right.png in Resources */,
+				EB4B8E2F1448D0D00070DBD7 /* 48-arrow-up.png in Resources */,
+				EB4B8E301448D0D00070DBD7 /* 48-badge-minus.png in Resources */,
+				EB4B8E321448D0D00070DBD7 /* 48-arrow-down.png in Resources */,
+				EB4B8E331448D0D00070DBD7 /* 48-arrow-left.png in Resources */,
+				EB2DE0E1144B57D5005FC8AC /* Settings.bundle in Resources */,
+				EB2DE121144B5E1F005FC8AC /* CompiladorViewController.xib in Resources */,
+				EBD91BD7144D22B800137C04 /* 48-badge-check.png in Resources */,
+				EBD91BD8144D22B800137C04 /* 48-badge-cross.png in Resources */,
+				EBD35F97147BB9E300AB65EF /* 57-Lionel_Preacherbot.png in Resources */,
+				EBD35F98147BB9E300AB65EF /* 114-Lionel_Preacherbot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +308,13 @@
 				EB3FA2F913F9CB59009975E5 /* main.m in Sources */,
 				EB3FA2FC13F9CB59009975E5 /* RobosAppDelegate.m in Sources */,
 				EB3FA30213F9CB59009975E5 /* RobosViewController.m in Sources */,
+				EB3FA32913F9D517009975E5 /* CaixaViewController.m in Sources */,
+				EB41753B13FAA321008D8343 /* ComandosOpcoesController.m in Sources */,
+				EB41753E13FAA93E008D8343 /* ValorOpcoesController.m in Sources */,
+				EBD1EE8F13FAC0AF004FEDFC /* UnidadeOpcoesController.m in Sources */,
+				EBB6981B14081FBD00D87E0F /* CondicionalController.m in Sources */,
+				EB004CD61443E3EE00CF281E /* CaixaSensoresViewController.m in Sources */,
+				EB2DE120144B5E1F005FC8AC /* CompiladorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +335,7 @@
 				EB3FA2FE13F9CB59009975E5 /* en */,
 			);
 			name = MainWindow.xib;
+			path = Robos;
 			sourceTree = "<group>";
 		};
 		EB3FA30313F9CB59009975E5 /* RobosViewController.xib */ = {
@@ -192,6 +344,7 @@
 				EB3FA30413F9CB59009975E5 /* en */,
 			);
 			name = RobosViewController.xib;
+			path = Robos;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -200,8 +353,11 @@
 		EB3FA30613F9CB59009975E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -210,6 +366,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -217,14 +374,18 @@
 		EB3FA30713F9CB59009975E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ARCHS = (
+					armv6,
+					armv7,
+				);
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -237,7 +398,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robos/Robos-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Robos/Robos-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -250,7 +413,9 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robos/Robos-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Robos/Robos-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -276,6 +441,7 @@
 				EB3FA30A13F9CB59009975E5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
