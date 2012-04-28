@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RobosViewController.h"
 
 @class RobosViewController;
 
@@ -17,11 +16,11 @@
     IBOutlet UIBarButtonItem *botaoErros;
     IBOutlet UIBarButtonItem *botaoAvancar;
     RobosViewController *__strong controller;
-    NSMutableArray *erros;
+    NSMutableArray *__strong erros;
 }
 
-@property (strong) RobosViewController * controller;
-@property (nonatomic) NSMutableArray *erros;
+@property (strong, nonatomic) RobosViewController * controller;
+@property (strong, nonatomic) NSMutableArray *erros;
 
 - (void)checarErros;
 - (IBAction)corrigirErros:(id)sender;

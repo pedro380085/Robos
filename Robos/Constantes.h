@@ -21,7 +21,7 @@
 
 // Simulador
 
-#define VELOCIDADE                              2               // m/s
+#define VELOCIDADE                              2.0               // m/s
 
 // Categorias
 
@@ -41,7 +41,7 @@
 #define COMANDO_SENSOR_3                        1013
 
 // Valor
-#define VALOR_PADRAO                            3
+#define VALOR_PADRAO                            4
 
 // Unidade
 #define UNIDADE_PADRAO                          NSLocalizedString(@"segundos", nil)

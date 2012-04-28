@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SimuladorViewController : UIViewController
+@class RobosViewController;
+
+@interface SimuladorViewController : UITableViewController {
+    RobosViewController *__strong controller;
+    NSMutableArray *__strong registro;
+}
+
+@property (strong, nonatomic) RobosViewController * controller;
+@property (strong, nonatomic) NSMutableArray *registro;
 
 @end

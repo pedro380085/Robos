@@ -119,7 +119,7 @@
         UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(0.0, 0.0, 150.0, 23.0)];
         [slider addTarget:self action:@selector(valorSliderTrocou:) forControlEvents:UIControlEventValueChanged];
         [slider setMinimumValue:0.0];
-        [slider setMaximumValue:150.0];
+        [slider setMaximumValue:80.0];
         [slider setValue:[[info objectForKey:VALOR] floatValue]];
         cell.accessoryView = slider;
         cell.textLabel.text = NSLocalizedString(@"Valor", nil);

@@ -7,6 +7,7 @@
 //
 
 #import "CompiladorViewController.h"
+#import "RobosViewController.h"
 #import "SimuladorViewController.h"
 
 @interface CompiladorViewController ()

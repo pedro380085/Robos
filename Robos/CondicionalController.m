@@ -44,9 +44,7 @@
     caixaComandos.navigationItem = self.navigationItem;
     caixaComandos.comandoCondicional = COMANDO_NULO;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoComando)];
-    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(entrarModoEdicao)];
-    self.navigationItem.title = NSLocalizedString(@"Comandos", nil);
+    voltarOriginal = self.navigationItem.leftBarButtonItem;
 }
 
 - (void)viewDidUnload
@@ -58,6 +56,12 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
+    
+    // Temos que manter essas linhas aqui para que os botões sejam atualizados sempre que a view aparece
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoComando)];
+    self.navigationItem.leftBarButtonItem = voltarOriginal;
+    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(entrarModoEdicao)];
+    self.navigationItem.title = NSLocalizedString(@"Comandos", nil);
 }
 
 - (void)viewDidAppear:(BOOL)animated

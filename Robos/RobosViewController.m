@@ -234,24 +234,29 @@
     if (!modoLeitura) {
         dicionario = [comandos objectAtIndex:[indexPath row]];
     } else {
+        // Agora nós temos que percorrer todos os comandos do array e, se ele for condicional, temos que olhar dentro para sabermos quantos comandos internos existem
         NSInteger total = 0, i = 0, j = 0;
-        for (i=0; i<[comandos count]; i++) {
-            for (j=0; j<[[[comandos objectAtIndex:i] objectForKey:CONDICIONAL_ARRAY] count]+1; j++) {
-                if (indexPath.row == total) {
-                    goto final;
+        
+        for (i=0; i < [comandos count]; i++) { // Passando por todos os elementos
+            for (j=0; j < [[[comandos objectAtIndex:i] objectForKey:CONDICIONAL_ARRAY] count]+1; j++) {
+                // Se for condicional, expande, caso contrário, sai do loop e vai pro incremento de total. Importante notar o +1, que é necessário para que se inclua o comando da condição, ou seja, o pai do bloco. Mesmo no caso em que o comando não é condicional, o código ainda incrementa total.
+                
+                if (indexPath.row == total) { // Se já tivermos chegado ao elemento procurado, não precisamos continuar percorrendo o laço
+                    goto final; // Usando goto pois é a maneira mais simples de quebrar dois loops
                 }
+                
                 total++;
             }
         }
         
-    final:
-        
+    final: 
         if (j==0) {
             dicionario = [comandos objectAtIndex:i];
         } else {
             dicionario = [[[comandos objectAtIndex:i] objectForKey: CONDICIONAL_ARRAY] objectAtIndex:(j-1)];
             celulaSecundaria = YES;
         }
+
     }
     
     // Configuramos a célula a partir do dicionário recebido
@@ -345,22 +350,31 @@
     
     // Variáveis de controle
     BOOL celulaSecundaria = NO;
+    NSInteger indexInterno = 0, indexExterno = 0;
     
     // Procuramos a posição do nosso dicionário
     if (!modoLeitura) {
         dicionario = [comandos objectAtIndex:[indexPath row]];
     } else {
+        // Agora nós temos que percorrer todos os comandos do array e, se ele for condicional, temos que olhar dentro para sabermos quantos comandos internos existem
         NSInteger total = 0, i = 0, j = 0;
-        for (i=0; i<[comandos count]; i++) {
-            for (j=0; j<[[[comandos objectAtIndex:i] objectForKey:CONDICIONAL_ARRAY] count]+1; j++) {
-                if (indexPath.row == total) {
-                    goto final;
+        
+        for (i=0; i < [comandos count]; i++) { // Passando por todos os elementos
+            for (j=0; j < [[[comandos objectAtIndex:i] objectForKey:CONDICIONAL_ARRAY] count]+1; j++) {
+                // Se for condicional, expande, caso contrário, sai do loop e vai pro incremento de total. Importante notar o +1, que é necessário para que se inclua o comando da condição, ou seja, o pai do bloco. Mesmo no caso em que o comando não é condicional, o código ainda incrementa total.
+                
+                if (indexPath.row == total) { // Se já tivermos chegado ao elemento procurado, não precisamos continuar percorrendo o laço
+                    goto final; // Usando goto pois é a maneira mais simples de quebrar dois loops
                 }
+                
                 total++;
             }
         }
         
     final:
+        // Precisamos salvar as variáveis para recuperar o controlador correto (código abaixo)
+        indexInterno = j;
+        indexExterno = i;
         
         if (j==0) {
             dicionario = [comandos objectAtIndex:i];
@@ -368,11 +382,14 @@
             dicionario = [[[comandos objectAtIndex:i] objectForKey: CONDICIONAL_ARRAY] objectAtIndex:(j-1)];
             celulaSecundaria = YES;
         }
+    
+    
+        
     }
     
     if (!celulaSecundaria) {
         // Verificamos o valor da chave CONDICIONAL e, caso seja YES, puxamos o CondicionalController, caso seja NO, puxamos o ComandosOpcoesController
-        if ([[[self.comandos objectAtIndex:indexPath.row] objectForKey:CONDICIONAL] boolValue]) {
+        if ([[[self.comandos objectAtIndex:indexExterno] objectForKey:CONDICIONAL] boolValue]) {
             CondicionalController * cc = [[CondicionalController alloc] initWithStyle:UITableViewStyleGrouped];
             cc.info = dicionario;
             cc.controller = self;
