@@ -47,7 +47,7 @@
 
 - (void) viewWillAppear:(BOOL)animated {
     //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(retornarNovoComando)];
-    self.navigationItem.title = @"Sensores";
+    self.navigationItem.title = NSLocalizedString(@"Sensores", nil);
 }
 
 - (void)viewDidUnload

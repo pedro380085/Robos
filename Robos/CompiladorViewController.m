@@ -68,11 +68,11 @@
         
         if (comando == COMANDO_SENAO || comando == COMANDO_ENTAO) {
             if (i == 0) {
-                [erros addObject:[NSString stringWithFormat:@"Erro na linha %d", i]];
+                [erros addObject:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Erro na linha", nil), i]];
             } else {
                 comando = [[[controller.comandos objectAtIndex:(i-1)] objectForKey:COMANDO] integerValue];
                 if (comando != COMANDO_SE && comando != COMANDO_SENAO) {
-                    [erros addObject:[NSString stringWithFormat:@"Erro na linha %d", i]];
+                    [erros addObject:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Erro na linha", nil), i]];
                 }
             }
         }

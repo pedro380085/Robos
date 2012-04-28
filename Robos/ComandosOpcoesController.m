@@ -15,11 +15,11 @@
 
 #pragma mark - Memory management
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -59,7 +59,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     [super viewWillAppear:animated];
 }
 
@@ -86,6 +86,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+/*
 #pragma mark - TableView DataSource and Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -129,20 +130,20 @@
         ValorOpcoesController * voc = [[ValorOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
         voc.info = self.info;
         voc.controller = self.controller;
-        voc.title = @"Valor";
+        voc.title = NSLocalizedString(@"Valor", nil);
         [self.navigationController pushViewController:voc animated:YES];
         [voc release];
     } else if (indexPath.section == 1) {
         UnidadeOpcoesController * uoc = [[UnidadeOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
         uoc.info = self.info;
         uoc.controller = self.controller;
-        uoc.title = @"Unidade";
+        uoc.title = NSLocalizedString(@"Unidade", nil);
         [self.navigationController pushViewController:uoc animated:YES];
         [uoc release];
     }
 
 }
 
-
+*/
 
 @end

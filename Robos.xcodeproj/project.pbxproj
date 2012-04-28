@@ -13,6 +13,11 @@
 		EB004CE41443E73700CF281E /* 128-sensors-applet.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004CE01443E73700CF281E /* 128-sensors-applet.png */; };
 		EB004CE51443E73700CF281E /* 128-traffic_lights.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004CE11443E73700CF281E /* 128-traffic_lights.png */; };
 		EB004D0714446ED200CF281E /* 48-HardwareChip.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004D0614446ED200CF281E /* 48-HardwareChip.png */; };
+		EB2CCA7B154B944000732540 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2CCA7A154B944000732540 /* MapKit.framework */; };
+		EB2CCA7D154B944600732540 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2CCA7C154B944600732540 /* CoreLocation.framework */; };
+		EB2CCA7E154B944F00732540 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2CCA77154B940F00732540 /* libQuickDialog.a */; };
+		EB2CCA91154B980500732540 /* ViewControllerDataBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2CCA90154B980500732540 /* ViewControllerDataBuilder.m */; };
+		EB2CCA94154B9D1500732540 /* ComandosOpcoesController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2CCA92154B9C6100732540 /* ComandosOpcoesController.m */; };
 		EB2DE0E1144B57D5005FC8AC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB2DE0E0144B57D5005FC8AC /* Settings.bundle */; };
 		EB2DE120144B5E1F005FC8AC /* CompiladorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2DE11E144B5E1F005FC8AC /* CompiladorViewController.m */; };
 		EB2DE121144B5E1F005FC8AC /* CompiladorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB2DE11F144B5E1F005FC8AC /* CompiladorViewController.xib */; };
@@ -28,7 +33,6 @@
 		EB3FA32913F9D517009975E5 /* CaixaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB3FA32713F9D517009975E5 /* CaixaViewController.m */; };
 		EB3FA32A13F9D517009975E5 /* CaixaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3FA32813F9D517009975E5 /* CaixaViewController.xib */; };
 		EB3FA34C13F9D9E9009975E5 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB3FA34B13F9D9E9009975E5 /* QuartzCore.framework */; };
-		EB41753B13FAA321008D8343 /* ComandosOpcoesController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41753A13FAA321008D8343 /* ComandosOpcoesController.m */; };
 		EB41753E13FAA93E008D8343 /* ValorOpcoesController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB41753D13FAA93E008D8343 /* ValorOpcoesController.m */; };
 		EB4B8E141448D09D0070DBD7 /* 48-warning.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E111448D09D0070DBD7 /* 48-warning.png */; };
 		EB4B8E151448D09D0070DBD7 /* 48-help.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E121448D09D0070DBD7 /* 48-help.png */; };
@@ -46,6 +50,30 @@
 		EBD91BD8144D22B800137C04 /* 48-badge-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD91BD6144D22B800137C04 /* 48-badge-cross.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		EB2CCA74154B940F00732540 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D80B0E3313E052DF00FA85CA;
+			remoteInfo = QuickDialogExample;
+		};
+		EB2CCA76154B940F00732540 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2C542393145ADEBD0026A152;
+			remoteInfo = QuickDialog;
+		};
+		EB2CCA78154B942B00732540 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C542392145ADEBD0026A152;
+			remoteInfo = QuickDialog;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		EB004CD31443E3ED00CF281E /* CaixaSensoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaixaSensoresViewController.h; sourceTree = "<group>"; };
 		EB004CD41443E3ED00CF281E /* CaixaSensoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaixaSensoresViewController.m; sourceTree = "<group>"; };
@@ -54,6 +82,13 @@
 		EB004CE01443E73700CF281E /* 128-sensors-applet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "128-sensors-applet.png"; sourceTree = "<group>"; };
 		EB004CE11443E73700CF281E /* 128-traffic_lights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "128-traffic_lights.png"; sourceTree = "<group>"; };
 		EB004D0614446ED200CF281E /* 48-HardwareChip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-HardwareChip.png"; sourceTree = "<group>"; };
+		EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
+		EB2CCA7A154B944000732540 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		EB2CCA7C154B944600732540 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EB2CCA8F154B980500732540 /* ViewControllerDataBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerDataBuilder.h; sourceTree = "<group>"; };
+		EB2CCA90154B980500732540 /* ViewControllerDataBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewControllerDataBuilder.m; sourceTree = "<group>"; };
+		EB2CCA92154B9C6100732540 /* ComandosOpcoesController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComandosOpcoesController.m; sourceTree = "<group>"; };
+		EB2CCA93154B9C6200732540 /* ComandosOpcoesController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComandosOpcoesController.h; sourceTree = "<group>"; };
 		EB2DE0E0144B57D5005FC8AC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		EB2DE11D144B5E1F005FC8AC /* CompiladorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompiladorViewController.h; sourceTree = "<group>"; };
 		EB2DE11E144B5E1F005FC8AC /* CompiladorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompiladorViewController.m; sourceTree = "<group>"; };
@@ -77,8 +112,6 @@
 		EB3FA32813F9D517009975E5 /* CaixaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CaixaViewController.xib; path = Robos/CaixaViewController.xib; sourceTree = "<group>"; };
 		EB3FA34B13F9D9E9009975E5 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		EB3FA34D13F9E3E2009975E5 /* Constantes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constantes.h; sourceTree = "<group>"; };
-		EB41753913FAA321008D8343 /* ComandosOpcoesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComandosOpcoesController.h; path = Robos.xcodeproj/ComandosOpcoesController.h; sourceTree = SOURCE_ROOT; };
-		EB41753A13FAA321008D8343 /* ComandosOpcoesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComandosOpcoesController.m; path = Robos.xcodeproj/ComandosOpcoesController.m; sourceTree = SOURCE_ROOT; };
 		EB41753C13FAA93E008D8343 /* ValorOpcoesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValorOpcoesController.h; sourceTree = "<group>"; };
 		EB41753D13FAA93E008D8343 /* ValorOpcoesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValorOpcoesController.m; sourceTree = "<group>"; };
 		EB4B8E111448D09D0070DBD7 /* 48-warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-warning.png"; sourceTree = "<group>"; };
@@ -105,6 +138,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB2CCA7E154B944F00732540 /* libQuickDialog.a in Frameworks */,
+				EB2CCA7D154B944600732540 /* CoreLocation.framework in Frameworks */,
+				EB2CCA7B154B944000732540 /* MapKit.framework in Frameworks */,
 				EB3FA2EC13F9CB59009975E5 /* UIKit.framework in Frameworks */,
 				EB3FA2EE13F9CB59009975E5 /* Foundation.framework in Frameworks */,
 				EB3FA2F013F9CB59009975E5 /* CoreGraphics.framework in Frameworks */,
@@ -150,6 +186,15 @@
 			name = Interfaces;
 			sourceTree = "<group>";
 		};
+		EB2CCA6C154B940F00732540 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EB2CCA75154B940F00732540 /* QuickDialogExample.app */,
+				EB2CCA77154B940F00732540 /* libQuickDialog.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EB3FA2DC13F9CB59009975E5 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +218,9 @@
 		EB3FA2EA13F9CB59009975E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */,
+				EB2CCA7C154B944600732540 /* CoreLocation.framework */,
+				EB2CCA7A154B944000732540 /* MapKit.framework */,
 				EB3FA34B13F9D9E9009975E5 /* QuartzCore.framework */,
 				EB3FA2EB13F9CB59009975E5 /* UIKit.framework */,
 				EB3FA2ED13F9CB59009975E5 /* Foundation.framework */,
@@ -198,12 +246,14 @@
 				EB004CD41443E3ED00CF281E /* CaixaSensoresViewController.m */,
 				EBB6981914081FBD00D87E0F /* CondicionalController.h */,
 				EBB6981A14081FBD00D87E0F /* CondicionalController.m */,
-				EB41753913FAA321008D8343 /* ComandosOpcoesController.h */,
-				EB41753A13FAA321008D8343 /* ComandosOpcoesController.m */,
+				EB2CCA93154B9C6200732540 /* ComandosOpcoesController.h */,
+				EB2CCA92154B9C6100732540 /* ComandosOpcoesController.m */,
 				EB41753C13FAA93E008D8343 /* ValorOpcoesController.h */,
 				EB41753D13FAA93E008D8343 /* ValorOpcoesController.m */,
 				EBD1EE8D13FAC0AF004FEDFC /* UnidadeOpcoesController.h */,
 				EBD1EE8E13FAC0AF004FEDFC /* UnidadeOpcoesController.m */,
+				EB2CCA8F154B980500732540 /* ViewControllerDataBuilder.h */,
+				EB2CCA90154B980500732540 /* ViewControllerDataBuilder.m */,
 			);
 			name = Classes;
 			path = Robos;
@@ -236,6 +286,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				EB2CCA79154B942B00732540 /* PBXTargetDependency */,
 			);
 			name = Robos;
 			productName = Robos;
@@ -248,7 +299,7 @@
 		EB3FA2DE13F9CB59009975E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = EB3FA2E113F9CB59009975E5 /* Build configuration list for PBXProject "Robos" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -260,12 +311,35 @@
 			mainGroup = EB3FA2DC13F9CB59009975E5;
 			productRefGroup = EB3FA2E813F9CB59009975E5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EB2CCA6C154B940F00732540 /* Products */;
+					ProjectRef = EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EB3FA2E613F9CB59009975E5 /* Robos */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EB2CCA75154B940F00732540 /* QuickDialogExample.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = QuickDialogExample.app;
+			remoteRef = EB2CCA74154B940F00732540 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EB2CCA77154B940F00732540 /* libQuickDialog.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libQuickDialog.a;
+			remoteRef = EB2CCA76154B940F00732540 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EB3FA2E513F9CB59009975E5 /* Resources */ = {
@@ -305,20 +379,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB2CCA94154B9D1500732540 /* ComandosOpcoesController.m in Sources */,
 				EB3FA2F913F9CB59009975E5 /* main.m in Sources */,
 				EB3FA2FC13F9CB59009975E5 /* RobosAppDelegate.m in Sources */,
 				EB3FA30213F9CB59009975E5 /* RobosViewController.m in Sources */,
 				EB3FA32913F9D517009975E5 /* CaixaViewController.m in Sources */,
-				EB41753B13FAA321008D8343 /* ComandosOpcoesController.m in Sources */,
 				EB41753E13FAA93E008D8343 /* ValorOpcoesController.m in Sources */,
 				EBD1EE8F13FAC0AF004FEDFC /* UnidadeOpcoesController.m in Sources */,
 				EBB6981B14081FBD00D87E0F /* CondicionalController.m in Sources */,
 				EB004CD61443E3EE00CF281E /* CaixaSensoresViewController.m in Sources */,
 				EB2DE120144B5E1F005FC8AC /* CompiladorViewController.m in Sources */,
+				EB2CCA91154B980500732540 /* ViewControllerDataBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EB2CCA79154B942B00732540 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = QuickDialog;
+			targetProxy = EB2CCA78154B942B00732540 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EB3FA2F413F9CB59009975E5 /* InfoPlist.strings */ = {
@@ -362,6 +445,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -380,6 +464,7 @@
 				);
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -393,15 +478,18 @@
 		EB3FA30913F9CB59009975E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robos/Robos-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Robos/Robos-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/QuickDialog\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -409,14 +497,17 @@
 		EB3FA30A13F9CB59009975E5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robos/Robos-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "Robos/Robos-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/QuickDialog\"/**";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

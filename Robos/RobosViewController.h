@@ -15,12 +15,14 @@
 #import "CaixaViewController.h"
 #import "CondicionalController.h"
 #import "ComandosOpcoesController.h"
+#import "ViewControllerDataBuilder.h"
 
 @class CaixaViewController;
 
 @interface RobosViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, CaixaViewDelegate> {
     IBOutlet UITableView *tabela;
     IBOutlet UIBarButtonItem *botaoModoLeitura;
+    IBOutlet UIBarButtonItem *botaoExecutar;
     CaixaViewController * caixaComandos;
     NSMutableArray * comandos;
     NSDictionary * dicionarioComandos;

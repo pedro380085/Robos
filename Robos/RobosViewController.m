@@ -39,6 +39,9 @@
 {
     [self carregarDados];
     
+    [botaoExecutar setTitle:NSLocalizedString(@"Executar", nil)];
+    [botaoModoLeitura setTitle:NSLocalizedString(@"Expandir", nil)];
+    
     NSMutableDictionary * e = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                @"48-arrow-up", [NSNumber numberWithInt:COMANDO_DIRECAO_CIMA],
                                @"48-arrow-right", [NSNumber numberWithInt:COMANDO_DIRECAO_DIREITA],
@@ -82,7 +85,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoComando)] autorelease];
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(entrarModoEdicao)] autorelease];
-    self.navigationItem.title = @"Fluxo";
+    self.navigationItem.title = NSLocalizedString(@"Fluxo", nil);
 }
 
 #pragma mark - Rotation support
@@ -125,9 +128,9 @@
 
 - (IBAction)leituraTocado {
     if (modoLeitura) {
-        botaoModoLeitura.title = @"Expandir";
+        botaoModoLeitura.title = NSLocalizedString(@"Expandir", nil);
     } else {
-        botaoModoLeitura.title = @"Recolher";
+        botaoModoLeitura.title = NSLocalizedString(@"Recolher", nil);
     }
     
     modoLeitura = !modoLeitura;
@@ -269,9 +272,9 @@
     
     if ([[dicionario objectForKey: CONDICIONAL] boolValue] == YES) {
         if ([[dicionario objectForKey: CONDICIONAL_CONDICAO_ATIVADO] boolValue] == YES) {
-            cell.textLabel.text = @"Ativado";
+            cell.textLabel.text = NSLocalizedString(@"Ativado", nil);
         } else {
-            cell.textLabel.text = @"Desativado";
+            cell.textLabel.text = NSLocalizedString(@"Desativado", nil);
         }
     } else {
         cell.textLabel.text = [[[NSString alloc] initWithFormat:@"%d %@", 
@@ -384,16 +387,20 @@
             CondicionalController * cc = [[CondicionalController alloc] initWithStyle:UITableViewStyleGrouped];
             cc.info = dicionario;
             cc.controller = self;
-            cc.title = @"Condicional";
+            cc.title = NSLocalizedString(@"Condicional", nil);
             [self.navigationController pushViewController:cc animated:YES];
             [cc release];
         } else {
+            ComandosOpcoesController *coc = (ComandosOpcoesController *) [[ComandosOpcoesController alloc] initWithRoot:[ViewControllerDataBuilder rootParaComandosOpcoesController]];
+            [self.navigationController pushViewController:coc animated:YES];
+            /*
             ComandosOpcoesController * coc = [[ComandosOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
             coc.info = dicionario;
             coc.controller = self;
-            coc.title = @"Comandos";
+            coc.title = NSLocalizedString(@"Comandos", nil);
             [self.navigationController pushViewController:coc animated:YES];
             [coc release];
+             */
         }
     }
     

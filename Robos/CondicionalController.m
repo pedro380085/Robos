@@ -59,7 +59,7 @@
 - (void) viewWillAppear:(BOOL)animated {
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoComando)] autorelease];
     //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(entrarModoEdicao)];
-    self.navigationItem.title = @"Comandos";
+    self.navigationItem.title = NSLocalizedString(@"Comandos", nil);
     [self.tableView reloadData];
 }
 
@@ -204,7 +204,7 @@
             [image setFrame:CGRectMake(200.0, 0.0, 48.0, 48.0)];
             [cell.contentView addSubview:image];
             
-            cell.textLabel.text = @"Objeto";
+            cell.textLabel.text = NSLocalizedString(@"Objeto", nil);
         } else {
             UISwitch *interruptor = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
             [interruptor addTarget:self action:@selector(valorInterruptorTrocou:) forControlEvents:UIControlEventValueChanged];
@@ -212,7 +212,7 @@
                 [interruptor setOn:YES];
             }
             cell.accessoryView = interruptor;
-            cell.textLabel.text = @"Ativado";
+            cell.textLabel.text = NSLocalizedString(@"Ativado", nil);
         }
     } else {
         NSInteger linha = [indexPath row];
@@ -230,7 +230,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSArray * v = [[NSArray alloc] initWithObjects:@"Condição", @"Comandos internos", nil];
+    NSArray * v = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Condição", nil), NSLocalizedString(@"Comandos internos", nil), nil];
     NSString * key;
     
     if (section+1 != [tableView numberOfSections]) {
@@ -274,6 +274,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Somente o último
     if (indexPath.section+1 != [tableView numberOfSections]) {
         if (indexPath.row == 0) {
             CaixaSensoresViewController *csvc = [[CaixaSensoresViewController alloc] initWithNibName:@"CaixaSensoresViewController" bundle:nil];
@@ -287,7 +288,7 @@
         ComandosOpcoesController * coc = [[ComandosOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
         coc.info = [[info objectForKey:CONDICIONAL_ARRAY] objectAtIndex:indexPath.row];
         coc.controller = controller;
-        coc.title = @"Comandos";
+        coc.title = NSLocalizedString(@"Comandos", nil);
         [self.navigationController pushViewController:coc animated:YES];
         [coc release];
     }

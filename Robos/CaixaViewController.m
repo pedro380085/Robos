@@ -49,7 +49,7 @@
 
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(retornarNovoComando)] autorelease];
-    self.navigationItem.title = @"Ferramentas";
+    self.navigationItem.title = NSLocalizedString(@"Ferramentas", nil);
     
     if (comandoCondicional == COMANDO_SE) {
         [self resetarInterface];

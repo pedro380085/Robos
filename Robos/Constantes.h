@@ -40,9 +40,9 @@
 #define VALOR_PADRAO                            3
 
 // Unidade
-#define UNIDADE_PADRAO                          @"segundos"
-#define UNIDADE_SEGUNDO                         @"segundos"
-#define UNIDADE_METRO                           @"metros"
+#define UNIDADE_PADRAO                          NSLocalizedString(@"segundos", nil)
+#define UNIDADE_SEGUNDO                         NSLocalizedString(@"segundos", nil)
+#define UNIDADE_METRO                           NSLocalizedString(@"metros", nil)
 
 // Condicional
 #define CONDICIONAL_CONDICAO_OBJETO             @"condicao_obj"

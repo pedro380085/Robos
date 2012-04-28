@@ -14,7 +14,7 @@
 
 @class RobosViewController;
 
-@interface ComandosOpcoesController : UITableViewController {
+@interface ComandosOpcoesController : QuickDialogController {
     RobosViewController * controller;
     NSMutableDictionary * info;
 }
