@@ -15,13 +15,6 @@
 
 #pragma mark - Memory management
 
-- (void)dealloc
-{
-    [comandos release];
-    [dicionarioComandos release];
-    [dicionarioUnidades release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -56,11 +49,9 @@
                                @"128-sensors-applet", [NSNumber numberWithInt:COMANDO_SENSOR_3],
                                nil];
     self.dicionarioComandos = e;
-    [e release];
     
     NSMutableArray * f = [[NSMutableArray alloc] initWithObjects: UNIDADE_SEGUNDO, UNIDADE_METRO, nil];
     self.dicionarioUnidades = f;
-    [f release];
     
     caixaComandos = [[CaixaViewController alloc] initWithNibName:@"CaixaViewController" bundle:nil];
     caixaComandos.delegate = self;
@@ -83,8 +74,8 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoComando)] autorelease];
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(entrarModoEdicao)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoComando)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(entrarModoEdicao)];
     self.navigationItem.title = NSLocalizedString(@"Fluxo", nil);
 }
 
@@ -120,10 +111,9 @@
 #pragma mark - XIB Methods
 
 - (IBAction)executarTocado {
-    CompiladorViewController * coc = [[CompiladorViewController alloc] initWithNibName:@"CompiladorViewController" bundle:nil];
-    coc.controller = self;
-    [self.navigationController pushViewController:coc animated:YES];
-    [coc release];
+    CompiladorViewController * cvc = [[CompiladorViewController alloc] initWithNibName:@"CompiladorViewController" bundle:nil];
+    cvc.controller = self;
+    [self.navigationController pushViewController:cvc animated:YES];
 }
 
 - (IBAction)leituraTocado {
@@ -175,7 +165,6 @@
     
     [comandos addObject:dic];
     
-    [dic release];
     
     [tabela reloadData];
     
@@ -231,7 +220,7 @@
 	UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier];
 	
 	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier] autorelease];
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
         cell.showsReorderControl = YES;
 	}
     
@@ -277,9 +266,9 @@
             cell.textLabel.text = NSLocalizedString(@"Desativado", nil);
         }
     } else {
-        cell.textLabel.text = [[[NSString alloc] initWithFormat:@"%d %@", 
+        cell.textLabel.text = [[NSString alloc] initWithFormat:@"%d %@", 
                                 [[dicionario objectForKey: VALOR] integerValue],
-                                [dicionario objectForKey: UNIDADE]] autorelease];
+                                [dicionario objectForKey: UNIDADE]];
     }
     
     if (celulaSecundaria) {
@@ -389,18 +378,12 @@
             cc.controller = self;
             cc.title = NSLocalizedString(@"Condicional", nil);
             [self.navigationController pushViewController:cc animated:YES];
-            [cc release];
         } else {
-            ComandosOpcoesController *coc = (ComandosOpcoesController *) [[ComandosOpcoesController alloc] initWithRoot:[ViewControllerDataBuilder rootParaComandosOpcoesController]];
-            [self.navigationController pushViewController:coc animated:YES];
-            /*
             ComandosOpcoesController * coc = [[ComandosOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
             coc.info = dicionario;
             coc.controller = self;
             coc.title = NSLocalizedString(@"Comandos", nil);
             [self.navigationController pushViewController:coc animated:YES];
-            [coc release];
-             */
         }
     }
     
@@ -429,10 +412,9 @@
     BOOL modo = [[NSUserDefaults standardUserDefaults] boolForKey:@"modo_edicao"];
     
     if (!modo) {
-        id objeto = [[comandos objectAtIndex:(destinationIndexPath.row)] retain];
+        id objeto = [comandos objectAtIndex:(destinationIndexPath.row)];
         [comandos removeObjectAtIndex:(destinationIndexPath.row)];
         [comandos insertObject:objeto atIndex:(sourceIndexPath.row)];
-        [objeto release];
     } else {
         // Variáveis de controle
         NSInteger comandoAnterior, comando, comandoSeguinte;
@@ -443,10 +425,9 @@
         
         /* Move a célula da origem para a origem.. Esse comando ainda será checado para ver se é válido (se não for, será revertido)
          Nós preferimos mover para o destino porque checar se o comando é válido sem mover seria muito mais complicado */
-        id objeto = [[comandos objectAtIndex:(sourceIndexPath.row)] retain];
+        id objeto = [comandos objectAtIndex:(sourceIndexPath.row)];
         [comandos removeObjectAtIndex:(sourceIndexPath.row)];
         [comandos insertObject:objeto atIndex:(destinationIndexPath.row)];
-        [objeto release];
         
         // Salvando o valor dos comandos imediatamente antes e depois do comando selecionado.
         if ((destinationIndexPath.row+1) == [comandos count]) {
@@ -469,10 +450,9 @@
             if (comandoSeguinte == COMANDO_SENAO || comandoSeguinte == COMANDO_ENTAO) {
                 operacaoValida = NO;
                 
-                objeto = [[comandos objectAtIndex:(destinationIndexPath.row)] retain];
+                objeto = [comandos objectAtIndex:(destinationIndexPath.row)];
                 [comandos removeObjectAtIndex:(destinationIndexPath.row)];
                 [comandos insertObject:objeto atIndex:(sourceIndexPath.row)];
-                [objeto release];
             }
         }
         
@@ -481,13 +461,12 @@
         if (comando == COMANDO_SE && operacaoValida == YES) {
             
             // Reverte a operação para deixar o vetor de comandos em seu estado original
-            objeto = [[comandos objectAtIndex:(destinationIndexPath.row)] retain];
+            objeto = [comandos objectAtIndex:(destinationIndexPath.row)];
             [comandos removeObjectAtIndex:(destinationIndexPath.row)];
             [comandos insertObject:objeto atIndex:(sourceIndexPath.row)];
-            [objeto release];
             
             // Cria um vetor para armazenar todos os objetos que serão retirados de comandos
-            NSMutableArray *objetos = [[NSMutableArray array] retain];
+            NSMutableArray *objetos = [NSMutableArray array];
             // Adiciona o primeiro comando ao vetor (caso especial pois ele é o único if que pode aparecer dentro do bloco a ser substituído)
             [objetos addObject:[self.comandos objectAtIndex:sourceIndexPath.row]];
             
@@ -535,7 +514,6 @@
             }
             
             // Liberamos o objeto
-            [objetos release];
         }
         
         [tableView reloadData];

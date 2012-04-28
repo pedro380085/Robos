@@ -16,12 +16,12 @@
 @class CaixaViewController;
 
 @interface CondicionalController : UITableViewController <CaixaViewDelegate> {
-    RobosViewController * controller;
+    RobosViewController * __unsafe_unretained controller;
     CaixaViewController *caixaComandos;
-    NSMutableDictionary * info;
+    NSMutableDictionary * __unsafe_unretained info;
 }
 
-@property (assign) RobosViewController * controller;
-@property (assign) NSMutableDictionary * info;
+@property (unsafe_unretained) RobosViewController * controller;
+@property (unsafe_unretained) NSMutableDictionary * info;
 
 @end

@@ -24,10 +24,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -47,8 +43,8 @@
 
 - (void) viewWillAppear:(BOOL)animated {
 
-    self.navigationItem.leftBarButtonItem = nil;
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(retornarNovoComando)] autorelease];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(retornarNovoComando)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Ajuda", nil) style:UIBarButtonItemStyleDone target:self action:@selector(mostrarAjuda)];
     self.navigationItem.title = NSLocalizedString(@"Ferramentas", nil);
     
     if (comandoCondicional == COMANDO_SE) {
@@ -90,6 +86,10 @@
 }
 
 #pragma mark - User Methods
+
+- (void)mostrarAjuda {
+    
+}
 
 - (void)resetarInterface {
     botaoSe.hidden = NO;

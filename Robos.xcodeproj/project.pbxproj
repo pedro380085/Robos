@@ -13,6 +13,9 @@
 		EB004CE41443E73700CF281E /* 128-sensors-applet.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004CE01443E73700CF281E /* 128-sensors-applet.png */; };
 		EB004CE51443E73700CF281E /* 128-traffic_lights.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004CE11443E73700CF281E /* 128-traffic_lights.png */; };
 		EB004D0714446ED200CF281E /* 48-HardwareChip.png in Resources */ = {isa = PBXBuildFile; fileRef = EB004D0614446ED200CF281E /* 48-HardwareChip.png */; };
+		EB1E8317154C222E00A8694F /* 48-blue-rotate.png in Resources */ = {isa = PBXBuildFile; fileRef = EB1E8316154C222E00A8694F /* 48-blue-rotate.png */; };
+		EB1E831B154C260D00A8694F /* SimuladorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB1E8319154C260D00A8694F /* SimuladorViewController.m */; };
+		EB1E831C154C260D00A8694F /* SimuladorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1E831A154C260D00A8694F /* SimuladorViewController.xib */; };
 		EB2CCA7B154B944000732540 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2CCA7A154B944000732540 /* MapKit.framework */; };
 		EB2CCA7D154B944600732540 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2CCA7C154B944600732540 /* CoreLocation.framework */; };
 		EB2CCA7E154B944F00732540 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2CCA77154B940F00732540 /* libQuickDialog.a */; };
@@ -82,6 +85,10 @@
 		EB004CE01443E73700CF281E /* 128-sensors-applet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "128-sensors-applet.png"; sourceTree = "<group>"; };
 		EB004CE11443E73700CF281E /* 128-traffic_lights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "128-traffic_lights.png"; sourceTree = "<group>"; };
 		EB004D0614446ED200CF281E /* 48-HardwareChip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-HardwareChip.png"; sourceTree = "<group>"; };
+		EB1E8316154C222E00A8694F /* 48-blue-rotate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-blue-rotate.png"; sourceTree = "<group>"; };
+		EB1E8318154C260D00A8694F /* SimuladorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimuladorViewController.h; sourceTree = "<group>"; };
+		EB1E8319154C260D00A8694F /* SimuladorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimuladorViewController.m; sourceTree = "<group>"; };
+		EB1E831A154C260D00A8694F /* SimuladorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SimuladorViewController.xib; path = Robos/SimuladorViewController.xib; sourceTree = "<group>"; };
 		EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
 		EB2CCA7A154B944000732540 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		EB2CCA7C154B944600732540 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -170,6 +177,7 @@
 				EB4B8E251448D0D00070DBD7 /* 48-arrow-left.png */,
 				EBD91BD5144D22B800137C04 /* 48-badge-check.png */,
 				EBD91BD6144D22B800137C04 /* 48-badge-cross.png */,
+				EB1E8316154C222E00A8694F /* 48-blue-rotate.png */,
 			);
 			name = Imagens;
 			sourceTree = "<group>";
@@ -180,6 +188,7 @@
 				EB3FA2FD13F9CB59009975E5 /* MainWindow.xib */,
 				EB3FA30313F9CB59009975E5 /* RobosViewController.xib */,
 				EB2DE11F144B5E1F005FC8AC /* CompiladorViewController.xib */,
+				EB1E831A154C260D00A8694F /* SimuladorViewController.xib */,
 				EB3FA32813F9D517009975E5 /* CaixaViewController.xib */,
 				EB004CD51443E3ED00CF281E /* CaixaSensoresViewController.xib */,
 			);
@@ -240,6 +249,8 @@
 				EB3FA30113F9CB59009975E5 /* RobosViewController.m */,
 				EB2DE11D144B5E1F005FC8AC /* CompiladorViewController.h */,
 				EB2DE11E144B5E1F005FC8AC /* CompiladorViewController.m */,
+				EB1E8318154C260D00A8694F /* SimuladorViewController.h */,
+				EB1E8319154C260D00A8694F /* SimuladorViewController.m */,
 				EB3FA32613F9D517009975E5 /* CaixaViewController.h */,
 				EB3FA32713F9D517009975E5 /* CaixaViewController.m */,
 				EB004CD31443E3ED00CF281E /* CaixaSensoresViewController.h */,
@@ -369,6 +380,8 @@
 				EBD91BD8144D22B800137C04 /* 48-badge-cross.png in Resources */,
 				EBD35F97147BB9E300AB65EF /* 57-Lionel_Preacherbot.png in Resources */,
 				EBD35F98147BB9E300AB65EF /* 114-Lionel_Preacherbot.png in Resources */,
+				EB1E8317154C222E00A8694F /* 48-blue-rotate.png in Resources */,
+				EB1E831C154C260D00A8694F /* SimuladorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +403,7 @@
 				EB004CD61443E3EE00CF281E /* CaixaSensoresViewController.m in Sources */,
 				EB2DE120144B5E1F005FC8AC /* CompiladorViewController.m in Sources */,
 				EB2CCA91154B980500732540 /* ViewControllerDataBuilder.m in Sources */,
+				EB1E831B154C260D00A8694F /* SimuladorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -498,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Robos/Robos-Prefix.pch";

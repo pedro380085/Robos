@@ -7,10 +7,15 @@
 //
 
 #import "CompiladorViewController.h"
+#import "SimuladorViewController.h"
+
+@interface CompiladorViewController ()
+@property BOOL estadoErros;
+@end
 
 @implementation CompiladorViewController
 
-@synthesize controller, erros;
+@synthesize controller, erros, estadoErros;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,10 +34,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)dealloc {
-    [super dealloc];
-    [erros release];
-}
 
 #pragma mark - View lifecycle
 
@@ -41,6 +42,9 @@
     [super viewDidLoad];
 
     erros = [[NSMutableArray alloc] initWithCapacity:1];
+    
+    self.navigationItem.title = NSLocalizedString(@"Compilador", nil);
+    [botaoErros setTitle:NSLocalizedString(@"Corrigir Erros", nil)];
              
     [self checarErros];
 }
@@ -60,6 +64,20 @@
 
 #pragma mark - User Methods
 
+- (void)setEstadoErros:(BOOL)novoEstadoErros {
+    estadoErros = novoEstadoErros;
+    
+    if (estadoErros == NO && erros != nil) {
+        [botaoAvancar setEnabled:YES];
+    } else {
+        [botaoAvancar setEnabled:NO];
+    }
+}
+
+- (BOOL)estadoErros {
+    return estadoErros;
+}
+
 - (void)checarErros {
     [erros removeAllObjects];
     
@@ -68,21 +86,22 @@
         
         if (comando == COMANDO_SENAO || comando == COMANDO_ENTAO) {
             if (i == 0) {
-                [erros addObject:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Erro na linha", nil), i]];
+                [erros addObject:[NSString stringWithFormat:@"%@ %d)", NSLocalizedString(@"Comando SE não encontrado (linha", nil), i+1]];
             } else {
                 comando = [[[controller.comandos objectAtIndex:(i-1)] objectForKey:COMANDO] integerValue];
                 if (comando != COMANDO_SE && comando != COMANDO_SENAO) {
-                    [erros addObject:[NSString stringWithFormat:@"%@ %d", NSLocalizedString(@"Erro na linha", nil), i]];
+                    [erros addObject:[NSString stringWithFormat:@"%@ %d)", NSLocalizedString(@"Comando SE ou SENÃO não encontrado (linha", nil), i+1]];
                 }
             }
         }
         
     }
     
+    self.estadoErros = ([erros count] != 0) ? YES : NO;
     [tabela reloadData];
 }
 
-- (IBAction)corrigirErros {
+- (IBAction)corrigirErros:(id)sender {
     for (int i=0; i<[controller.comandos count]; i++) {
         NSInteger comando = [[[controller.comandos objectAtIndex:i] objectForKey:COMANDO] integerValue];
         
@@ -99,7 +118,15 @@
         
     }
     
-    [self checarErros];
+    self.estadoErros = NO;
+    [tabela reloadData];
+    //[self checarErros];
+}
+
+- (IBAction)avancar:(id)sender {
+    SimuladorViewController * svc = [[SimuladorViewController alloc] initWithNibName:@"SimuladorViewController" bundle:nil];
+    //svc.controller = self;
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 #pragma mark - TableView DataSource and Delegate
@@ -122,11 +149,12 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
     cell.textLabel.text = [erros objectAtIndex:indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:@"48-badge-cross"];
+    cell.textLabel.numberOfLines = 0;
+    cell.imageView.image = (estadoErros == 1) ? [UIImage imageNamed:@"48-badge-cross"] : [UIImage imageNamed:@"48-badge-check"];
     cell.textLabel.textAlignment = UITextAlignmentRight;
     
     return cell;

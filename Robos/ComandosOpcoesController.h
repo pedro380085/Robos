@@ -14,12 +14,12 @@
 
 @class RobosViewController;
 
-@interface ComandosOpcoesController : QuickDialogController {
-    RobosViewController * controller;
-    NSMutableDictionary * info;
+@interface ComandosOpcoesController : UITableViewController {
+    RobosViewController * __strong controller;
+    NSMutableDictionary * __strong info;
 }
 
-@property (assign) RobosViewController * controller;
-@property (assign) NSMutableDictionary * info;
+@property (strong) RobosViewController * controller;
+@property (strong) NSMutableDictionary * info;
 
 @end

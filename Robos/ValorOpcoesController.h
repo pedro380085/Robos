@@ -12,14 +12,14 @@
 @class RobosViewController;
 
 @interface ValorOpcoesController : UITableViewController {
-    RobosViewController * controller;
-    NSMutableDictionary * info;
+    RobosViewController * __unsafe_unretained controller;
+    NSMutableDictionary * __unsafe_unretained info;
     NSIndexPath * ultimoIndex;
 }
 
-@property (assign) RobosViewController * controller;
-@property (assign) NSMutableDictionary * info;
-@property (nonatomic, retain) NSIndexPath * ultimoIndex;
+@property (unsafe_unretained) RobosViewController * controller;
+@property (unsafe_unretained) NSMutableDictionary * info;
+@property (nonatomic) NSIndexPath * ultimoIndex;
 
 
 @end

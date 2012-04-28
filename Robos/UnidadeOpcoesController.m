@@ -24,11 +24,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [ultimoIndex release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -42,9 +37,9 @@
 
 - (void)viewDidLoad
 {
-    ultimoIndex = [[NSIndexPath indexPathForRow:[controller.dicionarioUnidades indexOfObject:[info objectForKey:UNIDADE]] inSection:0] retain];
+    ultimoIndex = [NSIndexPath indexPathForRow:[controller.dicionarioUnidades indexOfObject:[info objectForKey:UNIDADE]] inSection:0];
     
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pronto)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pronto)];
     
     [super viewDidLoad];
 }
@@ -110,7 +105,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     cell.textLabel.text = [NSString stringWithFormat:@"%@", [controller.dicionarioUnidades objectAtIndex: indexPath.row]];
@@ -133,8 +128,7 @@
     
     [info setObject:[controller.dicionarioUnidades objectAtIndex: indexPath.row] forKey:UNIDADE];
     
-    [ultimoIndex release];
-    ultimoIndex = [indexPath retain];
+    ultimoIndex = indexPath;
 }
 
 @end

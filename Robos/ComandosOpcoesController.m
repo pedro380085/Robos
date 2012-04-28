@@ -19,15 +19,11 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
+        // Custom initialization
     }
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -86,7 +82,15 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-/*
+#pragma mark - User Methods
+
+- (void) valorSliderTrocou:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    [slider setValue:slider.value animated:YES];
+    [info setValue:[NSNumber numberWithInt:slider.value] forKey:VALOR];
+    ((UITableViewCell *)slider.superview).detailTextLabel.text = [[NSNumber numberWithInt:slider.value] stringValue];
+}
+
 #pragma mark - TableView DataSource and Delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -107,15 +111,21 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (indexPath.section == 0) {
-        cell.textLabel.text = [NSString stringWithFormat:VALOR];
+        UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(0.0, 0.0, 150.0, 23.0)];
+        [slider addTarget:self action:@selector(valorSliderTrocou:) forControlEvents:UIControlEventValueChanged];
+        [slider setMinimumValue:0.0];
+        [slider setMaximumValue:150.0];
+        [slider setValue:[[info objectForKey:VALOR] floatValue]];
+        cell.accessoryView = slider;
+        cell.textLabel.text = NSLocalizedString(@"Valor", nil);
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [[info objectForKey:VALOR] stringValue]];
     } else if (indexPath.section == 1) {
-        cell.textLabel.text = [NSString stringWithFormat:UNIDADE];
+        cell.textLabel.text = NSLocalizedString(@"Unidade", nil);
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", [info objectForKey:UNIDADE]];
     }
     
@@ -124,26 +134,30 @@
     return cell;
 }
 
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
+        /*
         ValorOpcoesController * voc = [[ValorOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
         voc.info = self.info;
         voc.controller = self.controller;
         voc.title = NSLocalizedString(@"Valor", nil);
         [self.navigationController pushViewController:voc animated:YES];
-        [voc release];
+         */
     } else if (indexPath.section == 1) {
         UnidadeOpcoesController * uoc = [[UnidadeOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
         uoc.info = self.info;
         uoc.controller = self.controller;
         uoc.title = NSLocalizedString(@"Unidade", nil);
         [self.navigationController pushViewController:uoc animated:YES];
-        [uoc release];
     }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
-
-*/
 
 @end

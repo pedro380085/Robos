@@ -32,9 +32,9 @@
 
 }
 
-@property (nonatomic, retain) NSMutableArray * comandos;
-@property (nonatomic, retain) NSDictionary * dicionarioComandos;
-@property (nonatomic, retain) NSArray * dicionarioUnidades;
+@property (nonatomic) NSMutableArray * comandos;
+@property (nonatomic) NSDictionary * dicionarioComandos;
+@property (nonatomic) NSArray * dicionarioUnidades;
 
 - (NSString *) nomeParaTag: (NSInteger) tag;
 - (void)salvarDados;

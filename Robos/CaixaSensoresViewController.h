@@ -17,10 +17,10 @@
     IBOutlet UIButton * botaoSenao;
     IBOutlet UIButton * botaoEntao;
     
-    id <CaixaViewDelegate> delegate;
+    id <CaixaViewDelegate> __unsafe_unretained delegate;
 }
 
-@property (assign) id <CaixaViewDelegate> delegate;
+@property (unsafe_unretained) id <CaixaViewDelegate> delegate;
 
 
 @end

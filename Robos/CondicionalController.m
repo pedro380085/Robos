@@ -24,10 +24,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -47,6 +43,10 @@
     caixaComandos.delegate = self;
     caixaComandos.navigationItem = self.navigationItem;
     caixaComandos.comandoCondicional = COMANDO_NULO;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoComando)];
+    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(entrarModoEdicao)];
+    self.navigationItem.title = NSLocalizedString(@"Comandos", nil);
 }
 
 - (void)viewDidUnload
@@ -57,9 +57,6 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoComando)] autorelease];
-    //self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(entrarModoEdicao)];
-    self.navigationItem.title = NSLocalizedString(@"Comandos", nil);
     [self.tableView reloadData];
 }
 
@@ -123,7 +120,6 @@
     
     [[info objectForKey:CONDICIONAL_ARRAY] addObject:dic];
     
-    [dic release];
     
     [self.tableView reloadData];
     
@@ -186,7 +182,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
 
     if (indexPath.section+1 != [tableView numberOfSections]) {
@@ -200,13 +196,13 @@
                 }
             }
         
-            UIImageView *image = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:[controller.dicionarioComandos objectForKey: [info objectForKey:CONDICIONAL_CONDICAO_OBJETO]]]] autorelease];
+            UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[controller.dicionarioComandos objectForKey: [info objectForKey:CONDICIONAL_CONDICAO_OBJETO]]]];
             [image setFrame:CGRectMake(200.0, 0.0, 48.0, 48.0)];
             [cell.contentView addSubview:image];
             
             cell.textLabel.text = NSLocalizedString(@"Objeto", nil);
         } else {
-            UISwitch *interruptor = [[[UISwitch alloc] initWithFrame:CGRectZero] autorelease];
+            UISwitch *interruptor = [[UISwitch alloc] initWithFrame:CGRectZero];
             [interruptor addTarget:self action:@selector(valorInterruptorTrocou:) forControlEvents:UIControlEventValueChanged];
             if ([[info objectForKey:CONDICIONAL_CONDICAO_ATIVADO] boolValue] == YES) {
                 [interruptor setOn:YES];
@@ -239,7 +235,6 @@
         key = [v objectAtIndex:1];
     }
     
-	[v release];
 	return key;
 }
 
@@ -280,7 +275,6 @@
             CaixaSensoresViewController *csvc = [[CaixaSensoresViewController alloc] initWithNibName:@"CaixaSensoresViewController" bundle:nil];
             csvc.delegate = self;
             [self.navigationController pushViewController:csvc animated:YES]; 
-            [csvc release];
         } else {
             
         }
@@ -290,7 +284,6 @@
         coc.controller = controller;
         coc.title = NSLocalizedString(@"Comandos", nil);
         [self.navigationController pushViewController:coc animated:YES];
-        [coc release];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

@@ -24,11 +24,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [ultimoIndex release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -46,9 +41,9 @@
 
 - (void)viewDidLoad
 {
-    ultimoIndex = [[NSIndexPath indexPathForRow:[[info objectForKey:VALOR] integerValue] inSection:0] retain];
+    ultimoIndex = [NSIndexPath indexPathForRow:[[info objectForKey:VALOR] integerValue] inSection:0];
     
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pronto)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pronto)];
     
     [super viewDidLoad];
 }
@@ -108,7 +103,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
@@ -120,20 +115,23 @@
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    // Configure the cell...
+    [cell.accessoryView setFrame:CGRectMake(10.0, cell.accessoryView.frame.origin.y, cell.accessoryView.frame.size.width, cell.accessoryView.frame.size.height)];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [[tableView cellForRowAtIndexPath:ultimoIndex] setAccessoryType: UITableViewCellAccessoryNone];
+    UITableViewCell * ultimaCelula = [tableView cellForRowAtIndexPath:ultimoIndex];
+    [ultimaCelula setAccessoryType: UITableViewCellAccessoryNone];
     [[tableView cellForRowAtIndexPath:indexPath] setAccessoryType: UITableViewCellAccessoryCheckmark];
+    [ultimaCelula.accessoryView setBounds:CGRectMake(10.0, ultimaCelula.accessoryView.frame.origin.y, ultimaCelula.accessoryView.frame.size.width, ultimaCelula.accessoryView.frame.size.height)];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
     
     [info setObject:[NSNumber numberWithInt:indexPath.row] forKey:VALOR];
     
-    ultimoIndex = [indexPath retain];
+    ultimoIndex = indexPath;
      
 }
 

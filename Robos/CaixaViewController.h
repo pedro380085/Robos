@@ -18,13 +18,13 @@
     IBOutlet UIButton * botaoEntao;
     
     NSInteger comandoCondicional;
-    UINavigationItem *navigationItem;
-    id <CaixaViewDelegate> delegate;
+    UINavigationItem *__strong navigationItem;
+    id <CaixaViewDelegate> __strong delegate;
 }
 
 @property (assign) NSInteger comandoCondicional;
-@property (assign) UINavigationItem *navigationItem;
-@property (assign) id <CaixaViewDelegate> delegate;
+@property (strong) UINavigationItem *navigationItem;
+@property (strong) id <CaixaViewDelegate> delegate;
 
 
 - (void)resetarInterface;

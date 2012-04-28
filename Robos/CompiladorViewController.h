@@ -13,14 +13,18 @@
 
 @interface CompiladorViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     IBOutlet UITableView *tabela;
-    RobosViewController * controller;
+    IBOutlet UIToolbar *toolbar;
+    IBOutlet UIBarButtonItem *botaoErros;
+    IBOutlet UIBarButtonItem *botaoAvancar;
+    RobosViewController *__strong controller;
     NSMutableArray *erros;
 }
 
-@property (assign) RobosViewController * controller;
-@property (nonatomic, retain) NSMutableArray *erros;
+@property (strong) RobosViewController * controller;
+@property (nonatomic) NSMutableArray *erros;
 
 - (void)checarErros;
-- (IBAction)corrigirErros;
+- (IBAction)corrigirErros:(id)sender;
+- (IBAction)avancar:(id)sender;
 
 @end

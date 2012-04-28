@@ -19,6 +19,10 @@
 #define CONDICIONAL                             @"Condicional"
 
 
+// Simulador
+
+#define VELOCIDADE                              2               // m/s
+
 // Categorias
 
 // Comando
