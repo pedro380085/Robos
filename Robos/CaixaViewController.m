@@ -44,8 +44,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    modoAjuda = NO;
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -76,6 +74,8 @@
         botaoSenao.hidden = YES;
         botaoEntao.hidden = YES;
     }
+    
+    modoAjuda = NO;
 }
 
 - (void)viewDidUnload

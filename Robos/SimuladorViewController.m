@@ -300,10 +300,10 @@
             } else {
                 cell.textLabel.text = [[NSString alloc] initWithFormat:@"%d %@", [[dicionario objectForKey: VALOR] integerValue], [dicionario objectForKey: UNIDADE]];
             }
+            
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            cell.accessoryView = nil;
         }
-        
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.accessoryView = nil;
         
         if (celulaSecundaria) {
             cell.indentationLevel = 3;

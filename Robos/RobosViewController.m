@@ -405,7 +405,7 @@
     if (!celulaSecundaria) {
         // Verificamos o valor da chave CONDICIONAL e, caso seja YES, puxamos o CondicionalController, caso seja NO, puxamos o ComandosOpcoesController
         if ([[[self.comandos objectAtIndex:indexExterno] objectForKey:CONDICIONAL] boolValue]) {
-            CondicionalController * cc = [[CondicionalController alloc] initWithStyle:UITableViewStyleGrouped];
+            CondicionalController * cc = [[CondicionalController alloc] initWithNibName:@"CondicionalController" bundle:nil];
             cc.info = dicionario;
             cc.controller = self;
             cc.title = NSLocalizedString(@"Condicional", nil);

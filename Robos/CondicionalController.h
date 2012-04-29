@@ -15,7 +15,11 @@
 @class RobosViewController;
 @class CaixaViewController;
 
-@interface CondicionalController : UITableViewController <CaixaViewDelegate> {
+@interface CondicionalController : UIViewController <CaixaViewDelegate> {
+    IBOutlet UITableView *tabela;
+    IBOutlet UIToolbar *toolbar;
+    IBOutlet UIBarButtonItem *botaoEditar;
+    
     RobosViewController * __strong controller;
     CaixaViewController *caixaComandos;
     NSMutableDictionary * __strong info;

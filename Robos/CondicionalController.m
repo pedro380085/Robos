@@ -15,9 +15,9 @@
 
 #pragma mark - Memory management
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -55,7 +55,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    [self.tableView reloadData];
+    [tabela reloadData];
     
     // Temos que manter essas linhas aqui para que os botões sejam atualizados sempre que a view aparece
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(adicionarNovoComando)];
@@ -90,7 +90,7 @@
 #pragma mark - User Methods
 
 - (IBAction) adicionarNovoComando {
-    [self.tableView setEditing:NO];
+    [tabela setEditing:NO];
     [self.view addSubview:caixaComandos.view];
     [caixaComandos viewWillAppear:YES];
 	
@@ -125,14 +125,14 @@
     [[info objectForKey:CONDICIONAL_ARRAY] addObject:dic];
     
     
-    [self.tableView reloadData];
+    [tabela reloadData];
     
     [self retornarNovoComando];
 }
 
 - (IBAction) novoSensorAdicionado:(id)sender {
     [info setValue:[NSNumber numberWithInteger:[sender tag]] forKey:CONDICIONAL_CONDICAO_OBJETO];
-    [self.tableView reloadData];
+    [tabela reloadData];
 }
 
 - (IBAction) retornarNovoComando {
@@ -149,7 +149,7 @@
 }
 
 - (IBAction) entrarModoEdicao {
-    [self.tableView setEditing: ![self.tableView isEditing] animated:YES];
+    [tabela setEditing: ![tabela isEditing] animated:YES];
     
 }
 
@@ -212,7 +212,7 @@
                 [interruptor setOn:YES];
             }
             cell.accessoryView = interruptor;
-            cell.textLabel.text = NSLocalizedString(@"Ativado", nil);
+            cell.textLabel.text = NSLocalizedString(@"Estado", nil);
         }
     } else {
         NSInteger linha = [indexPath row];
