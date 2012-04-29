@@ -104,12 +104,15 @@
 
 - (void)construindoRegistro {
     
+    // Sempre atualizando para o final da tabela
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
     NSMutableArray *comandos = controller.comandos;
 
     NSMutableDictionary *objetoComando = [comandos objectAtIndex:indexComandoExterno];
     NSInteger comando = [[objetoComando objectForKey:COMANDO] integerValue];
     
-    NSInteger tamanhoBloco = 0;
+    NSInteger tamanhoBloco = 0, indexParaBusca = 0;
     
     if (dentroBloco) {
         objetoComando = [[[comandos objectAtIndex:indexComandoExterno] objectForKey:CONDICIONAL_ARRAY] objectAtIndex:indexComandoInterno];
@@ -118,30 +121,31 @@
     }
     
     if (comando == COMANDO_DIRECAO_BAIXO || comando == COMANDO_DIRECAO_DIREITA || comando == COMANDO_DIRECAO_CIMA || comando == COMANDO_DIRECAO_ESQUERDA) {
-        if ([[objetoComando objectForKey:VALOR] floatValue] > progressoAtual) {
-            if ([[objetoComando objectForKey:UNIDADE] isEqualToString:UNIDADE_METRO]) {
-                progressoAtual += VELOCIDADE;
-            } else if ([[objetoComando objectForKey:UNIDADE] isEqualToString:UNIDADE_SEGUNDO]) {
-                progressoAtual += 1.0;
-            }
-            totalComandosExecutados++;
-        }
         
         if ([[objetoComando objectForKey:VALOR] floatValue] <= progressoAtual) {
             if (dentroBloco) {
                 if (indexComandoInterno < tamanhoBloco - 1) {
                     indexComandoInterno++;
                 } else {
+                    // Resetando valores, pois o bloco acabou
                     indexComandoExterno += indexComandoSucessor;
                     totalComandosExecutados += totalComandosParaPular;
-                    totalComandosParaPular = 0;
                     indexComandoInterno = 0;
                     dentroBloco = NO;
                 }
             } else {
                 indexComandoExterno++;
             }
+            totalComandosExecutados++;
             progressoAtual = 0.0;
+        }
+        
+        if ([[objetoComando objectForKey:VALOR] floatValue] > progressoAtual) {
+            if ([[objetoComando objectForKey:UNIDADE] isEqualToString:UNIDADE_METRO]) {
+                progressoAtual += VELOCIDADE;
+            } else if ([[objetoComando objectForKey:UNIDADE] isEqualToString:UNIDADE_SEGUNDO]) {
+                progressoAtual += 1.0;
+            }
         }
         
         // Sempre que encontramos o comando SE, analisaremos todas as cláusulas até encontrar uma positiva (ou não),
@@ -149,13 +153,14 @@
     } else if (comando == COMANDO_SE) {
         
         BOOL vivo = YES;
-        indexComandoSucessor = 0;
+        indexComandoSucessor = 1;
+        indexParaBusca = indexComandoExterno;
         
         // Vamos analisar todos as cláusulas até encontrar uma que não seja condicional
-        for (int i=0; (indexComandoExterno + i) < [comandos count]; i++) {
+        for (int i=0; (indexParaBusca + i) < [comandos count]; i++) {
 
             // Recebendo os comandos internos
-            NSMutableDictionary *objetoComandoCondicional = [controller.comandos objectAtIndex:indexComandoExterno + i];
+            NSMutableDictionary *objetoComandoCondicional = [controller.comandos objectAtIndex:indexParaBusca + i];
             NSInteger comandoCondicional = [[objetoComandoCondicional objectForKey:COMANDO] integerValue];
             
             if ((comandoCondicional == COMANDO_SE && i == 0) || comandoCondicional == COMANDO_SENAO || comandoCondicional == COMANDO_ENTAO) {
@@ -164,18 +169,19 @@
                     BOOL estadoAleatorio = [[numerosAleatorios objectAtIndex:([[objetoComandoCondicional objectForKey:CONDICIONAL_CONDICAO_OBJETO] integerValue] - COMANDO_SENSOR_1)] boolValue];
                     BOOL estadoSensor = [[objetoComandoCondicional objectForKey:CONDICIONAL_CONDICAO_ESTADO] boolValue];
                     
+                    //if (NO) {
                     if (estadoAleatorio == estadoSensor) {
                         dentroBloco = YES;
                         indexComandoExterno += i; 
                         indexComandoInterno = 0;
-                        indexComandoSucessor = 0;
+                        indexComandoSucessor = 1;
                         totalComandosExecutados++;
                         vivo = NO;
                         
                         [objetoComandoCondicional setValue:[NSNumber numberWithBool:YES] forKey:SIMULADOR_CONDICIONAL_ESTADO];
                     } else {
+                        indexComandoExterno++;
                         totalComandosExecutados += [[objetoComandoCondicional objectForKey:CONDICIONAL_ARRAY] count] + 1; // 1 para a própria célula condicional
-                        
                         [objetoComandoCondicional setValue:[NSNumber numberWithBool:NO] forKey:SIMULADOR_CONDICIONAL_ESTADO];
                     }
                     
@@ -211,7 +217,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return totalComandosExecutados;
+    return totalComandosExecutados + 1;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -224,7 +230,17 @@
         cell.showsReorderControl = YES;
 	}
     
-    if (indexPath.row != totalComandosExecutados) {
+    // Precisamos checar se é a ultima linha E se já chegamos no momento em que a célula não tem mais comandos para apresentar 
+    if (indexPath.row == totalComandosExecutados && [controller totalComandos] <= totalComandosExecutados) {
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20.0];
+        //cell.imageView.image = [UIImage imageNamed:@"48-badge-check"];
+        cell.textLabel.text = NSLocalizedString(@"Completo!", nil);
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        
+        return cell;
+    } else {
 
         // Criamos o dicionário que armazenará os dados
         NSMutableDictionary *dicionario;
@@ -284,15 +300,6 @@
         
         return cell;
         
-    } else {
-        cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20.0];
-        //cell.imageView.image = [UIImage imageNamed:@"48-badge-check"];
-        cell.textLabel.text = NSLocalizedString(@"Completo!", nil);
-        cell.textLabel.textAlignment = UITextAlignmentCenter;
-        cell.accessoryType = UITableViewCellAccessoryNone;
-
-        
-        return cell;
     }
 }
 

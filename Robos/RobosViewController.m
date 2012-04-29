@@ -444,9 +444,9 @@
     BOOL modo = [[NSUserDefaults standardUserDefaults] boolForKey:@"modo_edicao"];
     
     if (!modo) {
-        id objeto = [comandos objectAtIndex:(destinationIndexPath.row)];
-        [comandos removeObjectAtIndex:(destinationIndexPath.row)];
-        [comandos insertObject:objeto atIndex:(sourceIndexPath.row)];
+        id objeto = [comandos objectAtIndex:(sourceIndexPath.row)];
+        [comandos removeObjectAtIndex:(sourceIndexPath.row)];
+        [comandos insertObject:objeto atIndex:(destinationIndexPath.row)];
     } else {
         // Variáveis de controle
         NSInteger comandoAnterior, comando, comandoSeguinte;
@@ -542,14 +542,11 @@
                         [comandos insertObject:[objetos objectAtIndex:j] atIndex:destinationIndexPath.row+j];
                     }
                 }
-                
             }
-            
-            // Liberamos o objeto
         }
-        
-        [tableView reloadData];
     }
+    
+    [tableView reloadData];
 }
 
 
