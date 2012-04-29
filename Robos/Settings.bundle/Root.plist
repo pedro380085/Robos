@@ -18,7 +18,7 @@
 			<key>Key</key>
 			<string>modo_edicao</string>
 			<key>DefaultValue</key>
-			<false/>
+			<true/>
 		</dict>
 	</array>
 	<key>StringsTable</key>

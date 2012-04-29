@@ -13,9 +13,10 @@
 @class RobosViewController;
 
 @interface CaixaViewController : UIViewController <CaixaViewDataSource> {
-    IBOutlet UIButton * botaoSe;
-    IBOutlet UIButton * botaoSenao;
-    IBOutlet UIButton * botaoEntao;
+    IBOutlet UIButton *botaoSe;
+    IBOutlet UIButton *botaoSenao;
+    IBOutlet UIButton *botaoEntao;
+    IBOutlet UILabel *labelAjuda;
     
     NSInteger comandoCondicional;
     UINavigationItem *__strong navigationItem;
@@ -26,7 +27,7 @@
 @property (strong) UINavigationItem *navigationItem;
 @property (strong) id <CaixaViewDelegate> delegate;
 
-
+- (IBAction)entrarModoAjuda:(id)sender;
 - (void)resetarInterface;
 
 @end

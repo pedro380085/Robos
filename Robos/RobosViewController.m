@@ -146,7 +146,7 @@
 
 }
 
-- (IBAction) novoComandoAdicionado: (id) sender {
+- (IBAction)novoComandoAdicionado:(id)sender {
     NSMutableDictionary * dic = [[NSMutableDictionary alloc] initWithCapacity:2];
 
     [dic setValue:[NSNumber numberWithInteger:[sender tag]] forKey:COMANDO];

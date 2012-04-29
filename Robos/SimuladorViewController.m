@@ -105,7 +105,7 @@
 - (void)construindoRegistro {
     
     // Sempre atualizando para o final da tabela
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
     
     NSMutableArray *comandos = controller.comandos;
 
@@ -120,7 +120,7 @@
         comando = [[objetoComando objectForKey:COMANDO] integerValue];
     }
     
-    if (comando == COMANDO_DIRECAO_BAIXO || comando == COMANDO_DIRECAO_DIREITA || comando == COMANDO_DIRECAO_CIMA || comando == COMANDO_DIRECAO_ESQUERDA) {
+    if (![[objetoComando objectForKey:CONDICIONAL] boolValue]) {
         
         if ([[objetoComando objectForKey:VALOR] floatValue] <= progressoAtual) {
             if (dentroBloco) {
@@ -221,26 +221,37 @@
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSString * simpleTableIdentifier = @"SimpleTableIdentifier";
-	UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier];
-	
-	if (cell == nil) {
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
-        cell.showsReorderControl = YES;
-	}
-    
+
     // Precisamos checar se é a ultima linha E se já chegamos no momento em que a célula não tem mais comandos para apresentar 
     if (indexPath.row == totalComandosExecutados && [controller totalComandos] <= totalComandosExecutados) {
+        
+        NSString * simpleTableIdentifier = @"Cell";
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            cell.showsReorderControl = YES;
+        }
+        
+        
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20.0];
         //cell.imageView.image = [UIImage imageNamed:@"48-badge-check"];
-        cell.textLabel.text = NSLocalizedString(@"Completo!", nil);
+        cell.textLabel.text = NSLocalizedString(@"COMPLETO!", nil);
         cell.textLabel.textAlignment = UITextAlignmentCenter;
         cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryView = nil;
         
         
         return cell;
     } else {
+        
+        NSString * simpleTableIdentifier = @"SimpleTableIdentifier";
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+            cell.showsReorderControl = YES;
+        }
 
         // Criamos o dicionário que armazenará os dados
         NSMutableDictionary *dicionario;
@@ -280,7 +291,6 @@
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20.0];
         cell.imageView.image = [UIImage imageNamed:[controller nomeParaTag:[[dicionario objectForKey: COMANDO] integerValue]]];
         cell.textLabel.textAlignment = UITextAlignmentRight;
-        cell.accessoryType = UITableViewCellAccessoryNone;
         
         if ([[dicionario objectForKey: CONDICIONAL] boolValue] == YES) {
             cell.accessoryView = ([[dicionario objectForKey: SIMULADOR_CONDICIONAL_ESTADO] boolValue]) ? [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"48-badge-check"]] : [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"48-badge-cross"]];
@@ -291,6 +301,9 @@
                 cell.textLabel.text = [[NSString alloc] initWithFormat:@"%d %@", [[dicionario objectForKey: VALOR] integerValue], [dicionario objectForKey: UNIDADE]];
             }
         }
+        
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.accessoryView = nil;
         
         if (celulaSecundaria) {
             cell.indentationLevel = 3;

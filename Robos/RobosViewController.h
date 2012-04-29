@@ -36,7 +36,7 @@
 @property (nonatomic) NSDictionary * dicionarioComandos;
 @property (nonatomic) NSArray * dicionarioUnidades;
 
-- (NSString *) nomeParaTag: (NSInteger) tag;
+- (NSString *)nomeParaTag:(NSInteger) tag;
 - (void)salvarDados;
 - (void)carregarDados;
 - (IBAction)executarTocado;
