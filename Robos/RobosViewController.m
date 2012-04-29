@@ -155,8 +155,9 @@
         [dic setValue:@"" forKey:UNIDADE];
         [dic setValue:[NSNumber numberWithBool:YES] forKey:CONDICIONAL];
         [dic setValue:[NSNumber numberWithInteger:COMANDO_SENSOR_1] forKey:CONDICIONAL_CONDICAO_OBJETO];
-        [dic setValue:[NSNumber numberWithBool:YES] forKey:CONDICIONAL_CONDICAO_ATIVADO];
+        [dic setValue:[NSNumber numberWithBool:YES] forKey:CONDICIONAL_CONDICAO_ESTADO];
         [dic setValue:[NSMutableArray array] forKey:CONDICIONAL_ARRAY];
+        [dic setValue:[NSNumber numberWithBool:YES] forKey:SIMULADOR_CONDICIONAL_ESTADO];
     } else {
         [dic setValue:[NSNumber numberWithInteger:VALOR_PADRAO] forKey:VALOR];
         [dic setValue:UNIDADE_PADRAO forKey:UNIDADE];
@@ -190,6 +191,20 @@
     }
     [tabela setEditing: ![tabela isEditing] animated:YES];
     
+}
+
+- (NSInteger)totalComandos {
+    NSInteger total = 0;
+    
+    for (int i=0; i < [comandos count]; i++) {
+        if ([[[comandos objectAtIndex:i] objectForKey: CONDICIONAL] boolValue] == YES) {
+            total += [[[comandos objectAtIndex:i] objectForKey: CONDICIONAL_ARRAY] count];
+        }
+        
+        total++;
+    }
+    
+    return total;
 }
 
 #pragma mark - TableView DataSource and Delegate
@@ -265,7 +280,7 @@
     cell.textLabel.textAlignment = UITextAlignmentRight;
     
     if ([[dicionario objectForKey: CONDICIONAL] boolValue] == YES) {
-        if ([[dicionario objectForKey: CONDICIONAL_CONDICAO_ATIVADO] boolValue] == YES) {
+        if ([[dicionario objectForKey: CONDICIONAL_CONDICAO_ESTADO] boolValue] == YES) {
             cell.textLabel.text = NSLocalizedString(@"Ativado", nil);
         } else {
             cell.textLabel.text = NSLocalizedString(@"Desativado", nil);
@@ -350,7 +365,7 @@
     
     // Variáveis de controle
     BOOL celulaSecundaria = NO;
-    NSInteger indexInterno = 0, indexExterno = 0;
+    NSInteger indexInterno = 0, indexExterno = indexPath.row;
     
     // Procuramos a posição do nosso dicionário
     if (!modoLeitura) {

@@ -50,6 +50,14 @@
     [self checarErros];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if ([erros count] == 0) {
+        [self avancar:nil];
+    }
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -126,7 +134,7 @@
 
 - (IBAction)avancar:(id)sender {
     SimuladorViewController * svc = [[SimuladorViewController alloc] initWithNibName:@"SimuladorViewController" bundle:nil];
-    //svc.controller = self;
+    svc.controller = self.controller;
     [self.navigationController pushViewController:svc animated:YES];
 }
 

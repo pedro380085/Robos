@@ -12,18 +12,23 @@
 // User Defaults
 #define MODO_EDICAO                             @"modo_edicao"
 
+/* Keys para os dicionários */
+
 // Tipos
 #define COMANDO                                 @"Comando"
 #define VALOR                                   @"Valor"
 #define UNIDADE                                 @"Unidade"
 #define CONDICIONAL                             @"Condicional"
 
+// Condicional
+#define CONDICIONAL_CONDICAO_OBJETO             @"condicao_objeto"
+#define CONDICIONAL_CONDICAO_ESTADO             @"condicao_estado"
+#define CONDICIONAL_ARRAY                       @"array"
 
 // Simulador
+#define SIMULADOR_CONDICIONAL_ESTADO            @"simulador"
 
-#define VELOCIDADE                              2.0               // m/s
-
-// Categorias
+/* Valores para os dicionários */
 
 // Comando
 #define COMANDO_NULO                            1000
@@ -48,7 +53,6 @@
 #define UNIDADE_SEGUNDO                         NSLocalizedString(@"segundos", nil)
 #define UNIDADE_METRO                           NSLocalizedString(@"metros", nil)
 
-// Condicional
-#define CONDICIONAL_CONDICAO_OBJETO             @"condicao_obj"
-#define CONDICIONAL_CONDICAO_ATIVADO            @"condicao_ati"
-#define CONDICIONAL_ARRAY                       @"array"
+// Simulador
+#define VELOCIDADE                              2.0               // m/s
+

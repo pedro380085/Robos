@@ -11,7 +11,9 @@
 #import "RobosViewController.h"
 
 @interface SimuladorViewController () {
-    NSInteger indexComandoAtual, indexComandoSucessor;
+    NSArray *numerosAleatorios;
+    
+    NSInteger indexComandoExterno, indexComandoSucessor, indexComandoInterno, totalComandosExecutados, totalComandosParaPular;
     CGFloat progressoAtual;
     BOOL dentroBloco;
 }
@@ -41,8 +43,25 @@
     [todosControladores removeObjectAtIndex:([todosControladores indexOfObject:self] - 1)];
     self.navigationController.viewControllers = todosControladores;
     
-    indexComandoAtual = 0, indexComandoSucessor = 0, progressoAtual = 0.0;
+    self.navigationItem.title = NSLocalizedString(@"Simulador", nil);
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sensores", nil) style:UIBarButtonItemStylePlain target:self action:@selector(mostrarSensores)];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    numerosAleatorios = [self geradorRandomico:3];
+    
+    indexComandoExterno = 0, indexComandoSucessor = 0, indexComandoInterno = 0, totalComandosExecutados = 0, totalComandosParaPular = 0;
+    progressoAtual = 0.0;
     dentroBloco = NO;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    // E que comece a mágica :)
+    [self construindoRegistro];
 }
 
 - (void)viewDidUnload
@@ -59,43 +78,128 @@
 
 #pragma mark - User Methods
 
-- (BOOL)geradorRandomico {
-    int a = arc4random() % 3;
+- (void)mostrarSensores {
+    //
+}
+
+- (NSArray *)geradorRandomico:(NSInteger)quantidade {
     
-    if (a < 2) { // 66% chance
-        return YES;
+    NSMutableArray *valores = [[NSMutableArray alloc] initWithCapacity:quantidade];
+    
+    for (int i=0; i<quantidade; i++) {
+        int a = arc4random() % 3;
+        
+        //NSLog(@"%d", a);
+        
+        if (a < 2) { // 66% chance
+            [valores addObject:[NSNumber numberWithBool:YES]];
+        } else {
+            [valores addObject:[NSNumber numberWithBool:NO]];
+        }
     }
     
-    return NO;
+    // Retorna um NSArray e não um NSMutableArray
+    return [NSArray arrayWithArray:valores];
 }
 
 - (void)construindoRegistro {
     
-    NSMutableDictionary *objetoComando = [controller.comandos objectAtIndex:indexComandoAtual];
+    NSMutableArray *comandos = controller.comandos;
+
+    NSMutableDictionary *objetoComando = [comandos objectAtIndex:indexComandoExterno];
     NSInteger comando = [[objetoComando objectForKey:COMANDO] integerValue];
+    
+    NSInteger tamanhoBloco = 0;
+    
+    if (dentroBloco) {
+        objetoComando = [[[comandos objectAtIndex:indexComandoExterno] objectForKey:CONDICIONAL_ARRAY] objectAtIndex:indexComandoInterno];
+        tamanhoBloco = [[[comandos objectAtIndex:indexComandoExterno] objectForKey:CONDICIONAL_ARRAY] count];
+        comando = [[objetoComando objectForKey:COMANDO] integerValue];
+    }
+    
     if (comando == COMANDO_DIRECAO_BAIXO || comando == COMANDO_DIRECAO_DIREITA || comando == COMANDO_DIRECAO_CIMA || comando == COMANDO_DIRECAO_ESQUERDA) {
-        if ([[objetoComando objectForKey:VALOR] floatValue] < progressoAtual) {
+        if ([[objetoComando objectForKey:VALOR] floatValue] > progressoAtual) {
             if ([[objetoComando objectForKey:UNIDADE] isEqualToString:UNIDADE_METRO]) {
                 progressoAtual += VELOCIDADE;
             } else if ([[objetoComando objectForKey:UNIDADE] isEqualToString:UNIDADE_SEGUNDO]) {
                 progressoAtual += 1.0;
             }
-        } else {
+            totalComandosExecutados++;
+        }
+        
+        if ([[objetoComando objectForKey:VALOR] floatValue] <= progressoAtual) {
             if (dentroBloco) {
-                indexComandoAtual = indexComandoSucessor;
+                if (indexComandoInterno < tamanhoBloco - 1) {
+                    indexComandoInterno++;
+                } else {
+                    indexComandoExterno += indexComandoSucessor;
+                    totalComandosExecutados += totalComandosParaPular;
+                    totalComandosParaPular = 0;
+                    indexComandoInterno = 0;
+                    dentroBloco = NO;
+                }
             } else {
-                indexComandoAtual++;
+                indexComandoExterno++;
             }
+            progressoAtual = 0.0;
         }
         
         // Sempre que encontramos o comando SE, analisaremos todas as cláusulas até encontrar uma positiva (ou não),
         // dessa forma o código nunca encontra comandos SENAO ou ENTAO (pq eles já terão sido analisados).
     } else if (comando == COMANDO_SE) {
         
+        BOOL vivo = YES;
+        indexComandoSucessor = 0;
+        
+        // Vamos analisar todos as cláusulas até encontrar uma que não seja condicional
+        for (int i=0; (indexComandoExterno + i) < [comandos count]; i++) {
+
+            // Recebendo os comandos internos
+            NSMutableDictionary *objetoComandoCondicional = [controller.comandos objectAtIndex:indexComandoExterno + i];
+            NSInteger comandoCondicional = [[objetoComandoCondicional objectForKey:COMANDO] integerValue];
+            
+            if ((comandoCondicional == COMANDO_SE && i == 0) || comandoCondicional == COMANDO_SENAO || comandoCondicional == COMANDO_ENTAO) {
+                
+                if (vivo) {
+                    BOOL estadoAleatorio = [[numerosAleatorios objectAtIndex:([[objetoComandoCondicional objectForKey:CONDICIONAL_CONDICAO_OBJETO] integerValue] - COMANDO_SENSOR_1)] boolValue];
+                    BOOL estadoSensor = [[objetoComandoCondicional objectForKey:CONDICIONAL_CONDICAO_ESTADO] boolValue];
+                    
+                    if (estadoAleatorio == estadoSensor) {
+                        dentroBloco = YES;
+                        indexComandoExterno += i; 
+                        indexComandoInterno = 0;
+                        indexComandoSucessor = 0;
+                        totalComandosExecutados++;
+                        vivo = NO;
+                        
+                        [objetoComandoCondicional setValue:[NSNumber numberWithBool:YES] forKey:SIMULADOR_CONDICIONAL_ESTADO];
+                    } else {
+                        totalComandosExecutados += [[objetoComandoCondicional objectForKey:CONDICIONAL_ARRAY] count] + 1; // 1 para a própria célula condicional
+                        
+                        [objetoComandoCondicional setValue:[NSNumber numberWithBool:NO] forKey:SIMULADOR_CONDICIONAL_ESTADO];
+                    }
+                    
+                } else {
+                    indexComandoSucessor++;
+                    totalComandosParaPular += [[objetoComandoCondicional objectForKey:CONDICIONAL_ARRAY] count] + 1; // 1 para a própria célula condicional
+                    [objetoComandoCondicional setValue:[NSNumber numberWithBool:NO] forKey:SIMULADOR_CONDICIONAL_ESTADO];
+                }
+            } else {
+                break;
+            }
+            
+        }
     }
     
-    // Sempre modificando o registro com intervalos de 1 segundo
-    [self performSelector:@selector(construindoRegistro) withObject:nil afterDelay:1.0];
+    // Atualizando somente a célula do momento
+    //[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView reloadData];
+    
+    //NSLog(@"%d", [controller totalComandos]);
+    // Sempre modificando o registro com intervalos de 1 segundo caso não tenham acabado os comandos
+    if ([controller totalComandos] > totalComandosExecutados) {
+        [self performSelector:@selector(construindoRegistro) withObject:nil afterDelay:1.0];
+    }
 }
 
 #pragma mark - TableView DataSource and Delegate
@@ -107,120 +211,102 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return indexComandoAtual + 2;
+    return totalComandosExecutados;
 }
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
-    }
 
-    if (indexPath.section+1 != [tableView numberOfSections]) {
-        if (indexPath.row == 0) {
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSString * simpleTableIdentifier = @"SimpleTableIdentifier";
+	UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: simpleTableIdentifier];
+	
+	if (cell == nil) {
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell.showsReorderControl = YES;
+	}
+    
+    if (indexPath.row != totalComandosExecutados) {
+
+        // Criamos o dicionário que armazenará os dados
+        NSMutableDictionary *dicionario;
+        
+        // Variáveis de controle
+        BOOL celulaSecundaria = NO;
+        
+        // Referência aos comandos no controlador
+        NSMutableArray *comandos = controller.comandos;
+        
+        // Procuramos a posição do nosso dicionário
+        
+            // Agora nós temos que percorrer todos os comandos do array e, se ele for condicional, temos que olhar dentro para sabermos quantos comandos internos existem
+            NSInteger total = 0, i = 0, j = 0;
             
-            //int a = [[cell.contentView subviews] count];
-            for (int i=0; i<[[cell.contentView subviews] count]; i++) {
-                if ([[[cell.contentView subviews] objectAtIndex:i] isMemberOfClass:[UIImageView class]]) {
-                    [[[cell.contentView subviews] objectAtIndex:i] removeFromSuperview];
+            for (i=0; i < [comandos count]; i++) { // Passando por todos os elementos
+                for (j=0; j < [[[comandos objectAtIndex:i] objectForKey:CONDICIONAL_ARRAY] count]+1; j++) {
+                    // Se for condicional, expande, caso contrário, sai do loop e vai pro incremento de total. Importante notar o +1, que é necessário para que se inclua o comando da condição, ou seja, o pai do bloco. Mesmo no caso em que o comando não é condicional, o código ainda incrementa total.
+                    
+                    if (indexPath.row == total) { // Se já tivermos chegado ao elemento procurado, não precisamos continuar percorrendo o laço
+                        goto final; // Usando goto pois é a maneira mais simples de quebrar dois loops
+                    }
+                    
+                    total++;
                 }
             }
-        
-            UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[controller.dicionarioComandos objectForKey: [info objectForKey:CONDICIONAL_CONDICAO_OBJETO]]]];
-            [image setFrame:CGRectMake(200.0, 0.0, 48.0, 48.0)];
-            [cell.contentView addSubview:image];
             
-            cell.textLabel.text = NSLocalizedString(@"Objeto", nil);
-        } else {
-            UISwitch *interruptor = [[UISwitch alloc] initWithFrame:CGRectZero];
-            [interruptor addTarget:self action:@selector(valorInterruptorTrocou:) forControlEvents:UIControlEventValueChanged];
-            if ([[info objectForKey:CONDICIONAL_CONDICAO_ATIVADO] boolValue] == YES) {
-                [interruptor setOn:YES];
+        final: 
+            if (j==0) {
+                dicionario = [comandos objectAtIndex:i];
+            } else {
+                dicionario = [[[comandos objectAtIndex:i] objectForKey: CONDICIONAL_ARRAY] objectAtIndex:(j-1)];
+                celulaSecundaria = YES;
             }
-            cell.accessoryView = interruptor;
-            cell.textLabel.text = NSLocalizedString(@"Ativado", nil);
-        }
-    } else {
-        NSInteger linha = [indexPath row];
         
+        // Configuramos a célula a partir do dicionário recebido
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20.0];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.imageView.image = [UIImage imageNamed:[controller nomeParaTag:[[[[info objectForKey:CONDICIONAL_ARRAY] objectAtIndex:linha] objectForKey: COMANDO] integerValue]]];
-        cell.textLabel.text = [NSString stringWithFormat:@"%d %@", 
-                                [[[[info objectForKey:CONDICIONAL_ARRAY] objectAtIndex:linha] objectForKey: VALOR] integerValue],
-                               [[[info objectForKey:CONDICIONAL_ARRAY] objectAtIndex:linha] objectForKey: UNIDADE]];
+        cell.imageView.image = [UIImage imageNamed:[controller nomeParaTag:[[dicionario objectForKey: COMANDO] integerValue]]];
         cell.textLabel.textAlignment = UITextAlignmentRight;
-    }
-    
-    return cell;
-}
-/*
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSArray * v = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Condição", nil), NSLocalizedString(@"Comandos internos", nil), nil];
-    NSString * key;
-    
-    if (section+1 != [tableView numberOfSections]) {
-       key = [v objectAtIndex:section];
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        if ([[dicionario objectForKey: CONDICIONAL] boolValue] == YES) {
+            cell.accessoryView = ([[dicionario objectForKey: SIMULADOR_CONDICIONAL_ESTADO] boolValue]) ? [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"48-badge-check"]] : [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"48-badge-cross"]];
+        } else {
+            if (indexPath.row == totalComandosExecutados) {
+                cell.textLabel.text = [[NSString alloc] initWithFormat:@"%0.f %@", progressoAtual, [dicionario objectForKey: UNIDADE]];
+            } else {
+                cell.textLabel.text = [[NSString alloc] initWithFormat:@"%d %@", [[dicionario objectForKey: VALOR] integerValue], [dicionario objectForKey: UNIDADE]];
+            }
+        }
+        
+        if (celulaSecundaria) {
+            cell.indentationLevel = 3;
+        } else {
+            cell.indentationLevel = 1;
+        }
+        
+        return cell;
+        
     } else {
-        key = [v objectAtIndex:1];
-    }
-    
-	return key;
-}
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20.0];
+        //cell.imageView.image = [UIImage imageNamed:@"48-badge-check"];
+        cell.textLabel.text = NSLocalizedString(@"Completo!", nil);
+        cell.textLabel.textAlignment = UITextAlignmentCenter;
+        cell.accessoryType = UITableViewCellAccessoryNone;
 
-- (NSInteger) tableView:(UITableView *)tableView indentationLevelForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 1;
+        
+        return cell;
+    }
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return NO;
-    } else {
-        return YES;
-    }
-}
-
-- (void) tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [[info objectForKey:CONDICIONAL_ARRAY] removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationRight];
-    }
-    
+    return NO;
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section+1 != [tableView numberOfSections]) {
-        return 44;
-    } else {
-        return 66;
-    }
+    return 66;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Somente o último
-    if (indexPath.section+1 != [tableView numberOfSections]) {
-        if (indexPath.row == 0) {
-            CaixaSensoresViewController *csvc = [[CaixaSensoresViewController alloc] initWithNibName:@"CaixaSensoresViewController" bundle:nil];
-            csvc.delegate = self;
-            [self.navigationController pushViewController:csvc animated:YES]; 
-        } else {
-            
-        }
-    } else {
-        ComandosOpcoesController * coc = [[ComandosOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
-        coc.info = [[info objectForKey:CONDICIONAL_ARRAY] objectAtIndex:indexPath.row];
-        coc.controller = controller;
-        coc.title = NSLocalizedString(@"Comandos", nil);
-        [self.navigationController pushViewController:coc animated:YES];
-    }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}*/
+}
 
 @end

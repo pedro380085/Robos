@@ -13,6 +13,6 @@
 
 @interface ViewControllerDataBuilder : NSObject
 
-+ (QRootElement *)rootParaComandosOpcoesController;
+//+ (QRootElement *)rootParaComandosOpcoesController;
 
 @end

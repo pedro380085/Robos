@@ -18,4 +18,7 @@
 @property (strong, nonatomic) RobosViewController * controller;
 @property (strong, nonatomic) NSMutableArray *registro;
 
+- (NSArray *)geradorRandomico:(NSInteger)quantidade;
+- (void)construindoRegistro;
+
 @end

@@ -114,7 +114,7 @@
         [dic setValue:@"" forKey:UNIDADE];
         [dic setValue:[NSNumber numberWithBool:YES] forKey:CONDICIONAL];
         [dic setValue:[NSNumber numberWithInteger:COMANDO_SENSOR_1] forKey:CONDICIONAL_CONDICAO_OBJETO];
-        [dic setValue:[NSNumber numberWithBool:YES] forKey:CONDICIONAL_CONDICAO_ATIVADO];
+        [dic setValue:[NSNumber numberWithBool:YES] forKey:CONDICIONAL_CONDICAO_ESTADO];
         [dic setValue:[NSMutableArray array] forKey:CONDICIONAL_ARRAY];
     } else {
         [dic setValue:[NSNumber numberWithInteger:VALOR_PADRAO] forKey:VALOR];
@@ -155,7 +155,7 @@
 
 - (void) valorInterruptorTrocou:(id)sender {
     UISwitch *interruptor = (UISwitch *)sender;
-    [info setValue:[NSNumber numberWithBool:interruptor.on] forKey:CONDICIONAL_CONDICAO_ATIVADO];
+    [info setValue:[NSNumber numberWithBool:interruptor.on] forKey:CONDICIONAL_CONDICAO_ESTADO];
 }
 
 #pragma mark - TableView DataSource and Delegate
@@ -208,7 +208,7 @@
         } else {
             UISwitch *interruptor = [[UISwitch alloc] initWithFrame:CGRectZero];
             [interruptor addTarget:self action:@selector(valorInterruptorTrocou:) forControlEvents:UIControlEventValueChanged];
-            if ([[info objectForKey:CONDICIONAL_CONDICAO_ATIVADO] boolValue] == YES) {
+            if ([[info objectForKey:CONDICIONAL_CONDICAO_ESTADO] boolValue] == YES) {
                 [interruptor setOn:YES];
             }
             cell.accessoryView = interruptor;

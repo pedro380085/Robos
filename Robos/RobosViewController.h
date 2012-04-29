@@ -23,10 +23,10 @@
     IBOutlet UITableView *tabela;
     IBOutlet UIBarButtonItem *botaoModoLeitura;
     IBOutlet UIBarButtonItem *botaoExecutar;
-    CaixaViewController * caixaComandos;
-    NSMutableArray * comandos;
-    NSDictionary * dicionarioComandos;
-    NSArray * dicionarioUnidades;
+    CaixaViewController *caixaComandos;
+    NSMutableArray *comandos;
+    NSDictionary *dicionarioComandos;
+    NSArray *dicionarioUnidades;
     
     BOOL modoLeitura;
 
@@ -41,5 +41,6 @@
 - (void)carregarDados;
 - (IBAction)executarTocado;
 - (IBAction)leituraTocado;
+- (NSInteger)totalComandos;
 
 @end

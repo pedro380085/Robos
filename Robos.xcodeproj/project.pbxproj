@@ -18,7 +18,6 @@
 		EB1E831C154C260D00A8694F /* SimuladorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB1E831A154C260D00A8694F /* SimuladorViewController.xib */; };
 		EB2CCA7B154B944000732540 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2CCA7A154B944000732540 /* MapKit.framework */; };
 		EB2CCA7D154B944600732540 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2CCA7C154B944600732540 /* CoreLocation.framework */; };
-		EB2CCA7E154B944F00732540 /* libQuickDialog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EB2CCA77154B940F00732540 /* libQuickDialog.a */; };
 		EB2CCA91154B980500732540 /* ViewControllerDataBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2CCA90154B980500732540 /* ViewControllerDataBuilder.m */; };
 		EB2CCA94154B9D1500732540 /* ComandosOpcoesController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2CCA92154B9C6100732540 /* ComandosOpcoesController.m */; };
 		EB2DE0E1144B57D5005FC8AC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EB2DE0E0144B57D5005FC8AC /* Settings.bundle */; };
@@ -53,30 +52,6 @@
 		EBD91BD8144D22B800137C04 /* 48-badge-cross.png in Resources */ = {isa = PBXBuildFile; fileRef = EBD91BD6144D22B800137C04 /* 48-badge-cross.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		EB2CCA74154B940F00732540 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D80B0E3313E052DF00FA85CA;
-			remoteInfo = QuickDialogExample;
-		};
-		EB2CCA76154B940F00732540 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 2C542393145ADEBD0026A152;
-			remoteInfo = QuickDialog;
-		};
-		EB2CCA78154B942B00732540 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2C542392145ADEBD0026A152;
-			remoteInfo = QuickDialog;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		EB004CD31443E3ED00CF281E /* CaixaSensoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaixaSensoresViewController.h; sourceTree = "<group>"; };
 		EB004CD41443E3ED00CF281E /* CaixaSensoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaixaSensoresViewController.m; sourceTree = "<group>"; };
@@ -89,7 +64,6 @@
 		EB1E8318154C260D00A8694F /* SimuladorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimuladorViewController.h; sourceTree = "<group>"; };
 		EB1E8319154C260D00A8694F /* SimuladorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimuladorViewController.m; sourceTree = "<group>"; };
 		EB1E831A154C260D00A8694F /* SimuladorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SimuladorViewController.xib; path = Robos/SimuladorViewController.xib; sourceTree = "<group>"; };
-		EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = QuickDialog.xcodeproj; path = QuickDialog/QuickDialog.xcodeproj; sourceTree = "<group>"; };
 		EB2CCA7A154B944000732540 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		EB2CCA7C154B944600732540 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		EB2CCA8F154B980500732540 /* ViewControllerDataBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewControllerDataBuilder.h; sourceTree = "<group>"; };
@@ -145,7 +119,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB2CCA7E154B944F00732540 /* libQuickDialog.a in Frameworks */,
 				EB2CCA7D154B944600732540 /* CoreLocation.framework in Frameworks */,
 				EB2CCA7B154B944000732540 /* MapKit.framework in Frameworks */,
 				EB3FA2EC13F9CB59009975E5 /* UIKit.framework in Frameworks */,
@@ -195,15 +168,6 @@
 			name = Interfaces;
 			sourceTree = "<group>";
 		};
-		EB2CCA6C154B940F00732540 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EB2CCA75154B940F00732540 /* QuickDialogExample.app */,
-				EB2CCA77154B940F00732540 /* libQuickDialog.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EB3FA2DC13F9CB59009975E5 = {
 			isa = PBXGroup;
 			children = (
@@ -227,7 +191,6 @@
 		EB3FA2EA13F9CB59009975E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */,
 				EB2CCA7C154B944600732540 /* CoreLocation.framework */,
 				EB2CCA7A154B944000732540 /* MapKit.framework */,
 				EB3FA34B13F9D9E9009975E5 /* QuartzCore.framework */,
@@ -297,7 +260,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EB2CCA79154B942B00732540 /* PBXTargetDependency */,
 			);
 			name = Robos;
 			productName = Robos;
@@ -322,35 +284,12 @@
 			mainGroup = EB3FA2DC13F9CB59009975E5;
 			productRefGroup = EB3FA2E813F9CB59009975E5 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = EB2CCA6C154B940F00732540 /* Products */;
-					ProjectRef = EB2CCA6B154B940F00732540 /* QuickDialog.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				EB3FA2E613F9CB59009975E5 /* Robos */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		EB2CCA75154B940F00732540 /* QuickDialogExample.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = QuickDialogExample.app;
-			remoteRef = EB2CCA74154B940F00732540 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EB2CCA77154B940F00732540 /* libQuickDialog.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libQuickDialog.a;
-			remoteRef = EB2CCA76154B940F00732540 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EB3FA2E513F9CB59009975E5 /* Resources */ = {
@@ -408,14 +347,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EB2CCA79154B942B00732540 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = QuickDialog;
-			targetProxy = EB2CCA78154B942B00732540 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EB3FA2F413F9CB59009975E5 /* InfoPlist.strings */ = {
@@ -504,7 +435,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/QuickDialog\"/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -523,7 +454,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				USER_HEADER_SEARCH_PATHS = "\"${PROJECT_DIR}/QuickDialog\"/**";
+				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

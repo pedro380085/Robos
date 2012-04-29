@@ -10,7 +10,7 @@
 
 @implementation ViewControllerDataBuilder 
 
-
+/*
 + (QRootElement *)rootParaComandosOpcoesController {
     QRootElement *root = [[QRootElement alloc] init];
     root.title = NSLocalizedString(@"Comandos", nil);
@@ -40,5 +40,5 @@
     
     return root;
 }
-
+*/
 @end
