@@ -355,6 +355,7 @@
         
         if ([[dicionario objectForKey: CONDICIONAL] boolValue] == YES) {
             cell.accessoryView = ([[dicionario objectForKey: SIMULADOR_CONDICIONAL_ESTADO] boolValue]) ? [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"48-badge-check"]] : [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"48-badge-cross"]];
+            cell.textLabel.text = @"";
         } else {
             if (indexPath.row == totalComandosExecutados) {
                 cell.textLabel.text = [[NSString alloc] initWithFormat:@"%0.f %@", progressoAtual, [dicionario objectForKey: UNIDADE]];
