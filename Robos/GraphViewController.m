@@ -171,20 +171,27 @@
     return min;
 }
 
-- (float)lengthFromArray:(NSMutableArray *)arr forAxis:(NSInteger)axis  {
+- (float)lengthFromArray:(NSMutableArray *)arr forAxis:(NSInteger)axis {
+    float length = 0.0;
+    
     if (axis == X) {
-        return (MAX(0, [self maxValueInArray:arr forAxis:X]) - [self minValueInArray:arr forAxis:X]);
+        length = (MAX(0, [self maxValueInArray:arr forAxis:X]) - [self minValueInArray:arr forAxis:X]);
     }  else if (axis == Y) {
-        return (MAX(0, [self maxValueInArray:arr forAxis:Y]) - [self minValueInArray:arr forAxis:Y]);
+        length = (MAX(0, [self maxValueInArray:arr forAxis:Y]) - [self minValueInArray:arr forAxis:Y]);
     }
     
-    return 0.0;
+    // Para que o gráfico não fique vazio quando um dos eixos é 0
+    if (length == 0.0) {
+        length = 10.0;
+    }
+    
+    return length;
 }
 
 - (IBAction)showActionSheet:(id)sender {
     // Mostra popover para o botão
     
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Actions", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:nil otherButtonTitles: NSLocalizedString(@"Change line color", nil), nil];
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Ações", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancelar", nil) destructiveButtonTitle:nil otherButtonTitles: NSLocalizedString(@"Trocar cor da linha", nil), nil];
     [action showFromBarButtonItem:actionButton animated:YES];
 }
 

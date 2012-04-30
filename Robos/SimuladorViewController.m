@@ -124,9 +124,6 @@
 
 - (void)construindoRegistro {
     
-    // Sempre atualizando para o final da tabela
-    [tabela scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
-    
     NSMutableArray *comandos = controller.comandos;
 
     NSMutableDictionary *objetoComando = [comandos objectAtIndex:indexComandoExterno];
@@ -135,9 +132,17 @@
     NSInteger tamanhoBloco = 0, indexParaBusca = 0;
     
     if (dentroBloco) {
-        objetoComando = [[[comandos objectAtIndex:indexComandoExterno] objectForKey:CONDICIONAL_ARRAY] objectAtIndex:indexComandoInterno];
         tamanhoBloco = [[[comandos objectAtIndex:indexComandoExterno] objectForKey:CONDICIONAL_ARRAY] count];
-        comando = [[objetoComando objectForKey:COMANDO] integerValue];
+        
+        if (tamanhoBloco != 0) {
+            objetoComando = [[[comandos objectAtIndex:indexComandoExterno] objectForKey:CONDICIONAL_ARRAY] objectAtIndex:indexComandoInterno];
+            comando = [[objetoComando objectForKey:COMANDO] integerValue];
+        } else {
+            // Resetando valores, pois o bloco acabou
+            indexComandoExterno += indexComandoSucessor;
+            totalComandosExecutados += totalComandosParaPular;
+            dentroBloco = NO;
+        }
     }
     
     if (![[objetoComando objectForKey:CONDICIONAL] boolValue]) {
@@ -150,7 +155,6 @@
                     // Resetando valores, pois o bloco acabou
                     indexComandoExterno += indexComandoSucessor;
                     totalComandosExecutados += totalComandosParaPular;
-                    indexComandoInterno = 0;
                     dentroBloco = NO;
                 }
             } else {
@@ -223,9 +227,8 @@
                     //if (NO) {
                     if (estadoAleatorio == estadoSensor) {
                         dentroBloco = YES;
-                        //indexComandoExterno += i; 
+                        indexComandoExterno++; 
                         indexComandoInterno = 0;
-                        indexComandoSucessor = 1;
                         totalComandosExecutados++;
                         vivo = NO;
                         
@@ -249,8 +252,11 @@
     }
     
     // Atualizando somente a célula do momento
-    //[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+    //[tabela reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
     [tabela reloadData];
+    
+    // Sempre atualizando para o final da tabela
+    [tabela scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     
     //NSLog(@"%d", [controller totalComandos]);
     // Sempre modificando o registro com intervalos de 1 segundo caso não tenham acabado os comandos

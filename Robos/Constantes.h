@@ -54,5 +54,5 @@
 #define UNIDADE_METRO                           NSLocalizedString(@"metros", nil)
 
 // Simulador
-#define VELOCIDADE                              2.0               // m/s
+#define VELOCIDADE                              1.0               // m/s
 
