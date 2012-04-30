@@ -9,20 +9,23 @@
 #import "SimuladorViewController.h"
 #import "Constantes.h"
 #import "RobosViewController.h"
+#import "GraphViewController.h"
 
 @interface SimuladorViewController () {
-    NSArray *numerosAleatorios;
+    NSArray *numerosAleatorios, *labels;
     
     NSInteger indexComandoExterno, indexComandoSucessor, indexComandoInterno, totalComandosExecutados, totalComandosParaPular;
-    CGFloat progressoAtual;
-    BOOL dentroBloco;
+    CGFloat progressoAtual, progressoAcrescimo, progressoComando;
+    BOOL dentroBloco, estadoSimulacao;
+    
+    CGPoint pontoAtual;
 }
 
 @end
 
 @implementation SimuladorViewController
 
-@synthesize controller, registro;
+@synthesize controller, pontos;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,18 +46,27 @@
     [todosControladores removeObjectAtIndex:([todosControladores indexOfObject:self] - 1)];
     self.navigationController.viewControllers = todosControladores;
     
+    labels = [[NSArray alloc] initWithObjects:labelTraffic, labelChip, labelClock, nil];
+    
     self.navigationItem.title = NSLocalizedString(@"Simulador", nil);
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Sensores", nil) style:UIBarButtonItemStylePlain target:self action:@selector(mostrarSensores)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    pontos = [[NSMutableArray alloc] initWithCapacity:1];
+    pontoAtual = CGPointMake(0.0, 0.0);
+    [pontos addObject:[NSValue valueWithCGPoint:pontoAtual]];
+    
     numerosAleatorios = [self geradorRandomico:3];
     
     indexComandoExterno = 0, indexComandoSucessor = 0, indexComandoInterno = 0, totalComandosExecutados = 0, totalComandosParaPular = 0;
-    progressoAtual = 0.0;
-    dentroBloco = NO;
+    progressoAtual = 0.0, progressoAcrescimo = 0.0;
+    dentroBloco = NO, estadoSimulacao = NO;;
+    
+    if (estadoSimulacao) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Gráfico", nil) style:UIBarButtonItemStylePlain target:self action:@selector(mostrarGrafico)];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -62,6 +74,12 @@
     
     // E que comece a mágica :)
     [self construindoRegistro];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    estadoSimulacao = YES;
 }
 
 - (void)viewDidUnload
@@ -78,8 +96,10 @@
 
 #pragma mark - User Methods
 
-- (void)mostrarSensores {
-    //
+- (void)mostrarGrafico {
+    GraphViewController *mgvc = [[GraphViewController alloc] initWithNibName:@"GraphViewController" bundle:nil];
+    mgvc.pontos = pontos;
+    [self.navigationController pushViewController:mgvc animated:YES];
 }
 
 - (NSArray *)geradorRandomico:(NSInteger)quantidade {
@@ -88,13 +108,13 @@
     
     for (int i=0; i<quantidade; i++) {
         int a = arc4random() % 3;
-        
-        //NSLog(@"%d", a);
-        
+
         if (a < 2) { // 66% chance
             [valores addObject:[NSNumber numberWithBool:YES]];
+            [[labels objectAtIndex:i] setText:NSLocalizedString(@"Ativado", nil)];
         } else {
             [valores addObject:[NSNumber numberWithBool:NO]];
+            [[labels objectAtIndex:i] setText:NSLocalizedString(@"Desativado", nil)];
         }
     }
     
@@ -105,7 +125,7 @@
 - (void)construindoRegistro {
     
     // Sempre atualizando para o final da tabela
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+    [tabela scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:YES];
     
     NSMutableArray *comandos = controller.comandos;
 
@@ -140,12 +160,43 @@
             progressoAtual = 0.0;
         }
         
-        if ([[objetoComando objectForKey:VALOR] floatValue] > progressoAtual) {
+        // Atualizar variáveis
+        
+        progressoComando = [[objetoComando objectForKey:VALOR] floatValue];
+        if (progressoComando > progressoAtual) {
             if ([[objetoComando objectForKey:UNIDADE] isEqualToString:UNIDADE_METRO]) {
-                progressoAtual += VELOCIDADE;
+                progressoAcrescimo = VELOCIDADE;
+                if (progressoAtual + progressoAcrescimo > progressoComando) {
+                    progressoAcrescimo = progressoComando - progressoAtual;
+                }
             } else if ([[objetoComando objectForKey:UNIDADE] isEqualToString:UNIDADE_SEGUNDO]) {
-                progressoAtual += 1.0;
+                progressoAcrescimo = 1.0;
             }
+            
+            progressoAtual += progressoAcrescimo;
+            
+            switch (comando) {
+                case COMANDO_DIRECAO_CIMA:
+                    pontoAtual = CGPointMake(pontoAtual.x, pontoAtual.y + progressoAcrescimo);
+                    break;
+                case COMANDO_DIRECAO_DIREITA:
+                    pontoAtual = CGPointMake(pontoAtual.x + progressoAcrescimo, pontoAtual.y);
+                    break;
+                case COMANDO_DIRECAO_BAIXO:
+                    pontoAtual = CGPointMake(pontoAtual.x, pontoAtual.y - progressoAcrescimo);
+                    break;
+                case COMANDO_DIRECAO_ESQUERDA:
+                    pontoAtual = CGPointMake(pontoAtual.x - progressoAcrescimo, pontoAtual.y);
+                    break;
+                case COMANDO_PARADA:
+                    //pontoAtual = CGPointMake(pontoAtual.x, pontoAtual.y + progressoAcrescimo);
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            [pontos addObject:[NSValue valueWithCGPoint:pontoAtual]];
         }
         
         // Sempre que encontramos o comando SE, analisaremos todas as cláusulas até encontrar uma positiva (ou não),
@@ -172,7 +223,7 @@
                     //if (NO) {
                     if (estadoAleatorio == estadoSensor) {
                         dentroBloco = YES;
-                        indexComandoExterno += i; 
+                        //indexComandoExterno += i; 
                         indexComandoInterno = 0;
                         indexComandoSucessor = 1;
                         totalComandosExecutados++;
@@ -199,12 +250,15 @@
     
     // Atualizando somente a célula do momento
     //[self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath indexPathForRow:totalComandosExecutados inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-    [self.tableView reloadData];
+    [tabela reloadData];
     
     //NSLog(@"%d", [controller totalComandos]);
     // Sempre modificando o registro com intervalos de 1 segundo caso não tenham acabado os comandos
-    if ([controller totalComandos] > totalComandosExecutados) {
+    if ([controller totalComandos] > totalComandosExecutados && !estadoSimulacao) {
         [self performSelector:@selector(construindoRegistro) withObject:nil afterDelay:1.0];
+    } else {
+        estadoSimulacao = YES;
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Gráfico", nil) style:UIBarButtonItemStylePlain target:self action:@selector(mostrarGrafico)];
     }
 }
 

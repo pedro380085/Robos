@@ -116,10 +116,10 @@
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     if (indexPath.section == 0) {
-        UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(0.0, 0.0, 150.0, 23.0)];
+        UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(0.0, 0.0, 165.0, 23.0)];
         [slider addTarget:self action:@selector(valorSliderTrocou:) forControlEvents:UIControlEventValueChanged];
         [slider setMinimumValue:0.0];
-        [slider setMaximumValue:80.0];
+        [slider setMaximumValue:60.0];
         [slider setValue:[[info objectForKey:VALOR] floatValue]];
         cell.accessoryView = slider;
         cell.textLabel.text = NSLocalizedString(@"Valor", nil);

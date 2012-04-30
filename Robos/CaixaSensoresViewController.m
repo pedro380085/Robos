@@ -8,6 +8,11 @@
 
 #import "CaixaSensoresViewController.h"
 
+@interface CaixaSensoresViewController () {
+    BOOL modoAjuda;
+}
+
+@end
 
 @implementation CaixaSensoresViewController
 
@@ -42,8 +47,12 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Ajuda", nil) style:UIBarButtonItemStylePlain target:self action:@selector(entrarModoAjuda:)];
     //self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(retornarNovoComando)];
     self.navigationItem.title = NSLocalizedString(@"Sensores", nil);
+    labelAjuda.text = @"";
+    
+    modoAjuda = NO;
 }
 
 - (void)viewDidUnload
@@ -63,10 +72,40 @@
 
 #pragma mark - User Methods
 
-- (IBAction) novoComandoAdicionado: (id) sender {
-    [delegate viewWillAppear:YES];
-    [delegate novoSensorAdicionado:sender];
-    [self.navigationController popViewControllerAnimated:YES];
+- (IBAction)entrarModoAjuda:(id)sender {
+    if (modoAjuda) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Ajuda", nil) style:UIBarButtonItemStylePlain target:self action:@selector(entrarModoAjuda:)];
+        [labelAjuda setText:@""];
+    } else {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Ajuda", nil) style:UIBarButtonItemStyleDone target:self action:@selector(entrarModoAjuda:)];
+        [labelAjuda setText:NSLocalizedString(@"Toque nos sensores", nil)];
+    }
+    
+    modoAjuda = !modoAjuda;
+}
+
+- (IBAction)novoComandoAdicionado:(id)sender {
+    
+    if (modoAjuda) {
+        switch ([sender tag]) {
+            case COMANDO_SENSOR_1:
+                [labelAjuda setText:NSLocalizedString(@"Tráfego", nil)];
+                break;
+            case COMANDO_SENSOR_2:
+                [labelAjuda setText:NSLocalizedString(@"Chip", nil)];
+                break;
+            case COMANDO_SENSOR_3:
+                [labelAjuda setText:NSLocalizedString(@"Relógio", nil)];
+                break;
+                
+            default:
+                break;
+        }
+    } else {
+        [delegate viewWillAppear:YES];
+        [delegate novoSensorAdicionado:sender];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

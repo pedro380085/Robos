@@ -13,14 +13,12 @@
 @class RobosViewController;
 
 @interface CaixaSensoresViewController : UIViewController <CaixaViewDataSource> {
-    IBOutlet UIButton * botaoSe;
-    IBOutlet UIButton * botaoSenao;
-    IBOutlet UIButton * botaoEntao;
+    IBOutlet UILabel *labelAjuda;
     
-    id <CaixaViewDelegate> __unsafe_unretained delegate;
+    id <CaixaViewDelegate> delegate;
 }
 
-@property (unsafe_unretained) id <CaixaViewDelegate> delegate;
+@property (strong) id <CaixaViewDelegate> delegate;
 
 
 @end

@@ -107,10 +107,6 @@
     modoAjuda = !modoAjuda;
 }
 
-- (void)mostrarAjuda {
-    
-}
-
 - (void)resetarInterface {
     botaoSe.hidden = NO;
     botaoSenao.hidden = NO;

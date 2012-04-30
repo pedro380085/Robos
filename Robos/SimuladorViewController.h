@@ -10,13 +10,18 @@
 
 @class RobosViewController;
 
-@interface SimuladorViewController : UITableViewController {
+@interface SimuladorViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     RobosViewController *__strong controller;
-    NSMutableArray *__strong registro;
+    NSMutableArray *__strong pontos;
+    
+    IBOutlet UITableView *tabela;
+    IBOutlet UILabel *labelClock;
+    IBOutlet UILabel *labelTraffic;
+    IBOutlet UILabel *labelChip;
 }
 
 @property (strong, nonatomic) RobosViewController * controller;
-@property (strong, nonatomic) NSMutableArray *registro;
+@property (strong, nonatomic) NSMutableArray *pontos;
 
 - (NSArray *)geradorRandomico:(NSInteger)quantidade;
 - (void)construindoRegistro;

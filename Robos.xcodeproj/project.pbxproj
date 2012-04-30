@@ -44,6 +44,8 @@
 		EB4B8E301448D0D00070DBD7 /* 48-badge-minus.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E221448D0D00070DBD7 /* 48-badge-minus.png */; };
 		EB4B8E321448D0D00070DBD7 /* 48-arrow-down.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E241448D0D00070DBD7 /* 48-arrow-down.png */; };
 		EB4B8E331448D0D00070DBD7 /* 48-arrow-left.png in Resources */ = {isa = PBXBuildFile; fileRef = EB4B8E251448D0D00070DBD7 /* 48-arrow-left.png */; };
+		EB5E69D1154E41A8005F3C15 /* GraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5E69CF154E40B3005F3C15 /* GraphViewController.m */; };
+		EB5E69D2154E4C0C005F3C15 /* GraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB5E69D0154E40B3005F3C15 /* GraphViewController.xib */; };
 		EBB6981B14081FBD00D87E0F /* CondicionalController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBB6981A14081FBD00D87E0F /* CondicionalController.m */; };
 		EBC1D0E5154D0D2600E9C13E /* CondicionalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBC1D0E4154D0D2600E9C13E /* CondicionalController.xib */; };
 		EBC1D0E9154D10D500E9C13E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EBC1D0EB154D10D500E9C13E /* Localizable.strings */; };
@@ -125,6 +127,9 @@
 		EB4B8E241448D0D00070DBD7 /* 48-arrow-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-arrow-down.png"; sourceTree = "<group>"; };
 		EB4B8E251448D0D00070DBD7 /* 48-arrow-left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-arrow-left.png"; sourceTree = "<group>"; };
 		EB56E8A814018293001880BC /* Protocolos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Protocolos.h; sourceTree = "<group>"; };
+		EB5E69CE154E40B3005F3C15 /* GraphViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraphViewController.h; sourceTree = "<group>"; };
+		EB5E69CF154E40B3005F3C15 /* GraphViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraphViewController.m; sourceTree = "<group>"; };
+		EB5E69D0154E40B3005F3C15 /* GraphViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = GraphViewController.xib; path = Robos/GraphViewController.xib; sourceTree = "<group>"; };
 		EBB6981914081FBD00D87E0F /* CondicionalController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CondicionalController.h; sourceTree = "<group>"; };
 		EBB6981A14081FBD00D87E0F /* CondicionalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CondicionalController.m; sourceTree = "<group>"; };
 		EBC1D0E4154D0D2600E9C13E /* CondicionalController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CondicionalController.xib; sourceTree = "<group>"; };
@@ -267,11 +272,12 @@
 			children = (
 				EB3FA2FD13F9CB59009975E5 /* MainWindow.xib */,
 				EB3FA30313F9CB59009975E5 /* RobosViewController.xib */,
-				EB2DE11F144B5E1F005FC8AC /* CompiladorViewController.xib */,
-				EB1E831A154C260D00A8694F /* SimuladorViewController.xib */,
 				EB3FA32813F9D517009975E5 /* CaixaViewController.xib */,
 				EB004CD51443E3ED00CF281E /* CaixaSensoresViewController.xib */,
 				EBC1D0E4154D0D2600E9C13E /* CondicionalController.xib */,
+				EB2DE11F144B5E1F005FC8AC /* CompiladorViewController.xib */,
+				EB1E831A154C260D00A8694F /* SimuladorViewController.xib */,
+				EB5E69D0154E40B3005F3C15 /* GraphViewController.xib */,
 			);
 			name = Interfaces;
 			sourceTree = "<group>";
@@ -320,10 +326,6 @@
 				EB3FA2FB13F9CB59009975E5 /* RobosAppDelegate.m */,
 				EB3FA30013F9CB59009975E5 /* RobosViewController.h */,
 				EB3FA30113F9CB59009975E5 /* RobosViewController.m */,
-				EB2DE11D144B5E1F005FC8AC /* CompiladorViewController.h */,
-				EB2DE11E144B5E1F005FC8AC /* CompiladorViewController.m */,
-				EB1E8318154C260D00A8694F /* SimuladorViewController.h */,
-				EB1E8319154C260D00A8694F /* SimuladorViewController.m */,
 				EB3FA32613F9D517009975E5 /* CaixaViewController.h */,
 				EB3FA32713F9D517009975E5 /* CaixaViewController.m */,
 				EB004CD31443E3ED00CF281E /* CaixaSensoresViewController.h */,
@@ -338,6 +340,12 @@
 				EBD1EE8E13FAC0AF004FEDFC /* UnidadeOpcoesController.m */,
 				EB2CCA8F154B980500732540 /* ViewControllerDataBuilder.h */,
 				EB2CCA90154B980500732540 /* ViewControllerDataBuilder.m */,
+				EB2DE11D144B5E1F005FC8AC /* CompiladorViewController.h */,
+				EB2DE11E144B5E1F005FC8AC /* CompiladorViewController.m */,
+				EB1E8318154C260D00A8694F /* SimuladorViewController.h */,
+				EB1E8319154C260D00A8694F /* SimuladorViewController.m */,
+				EB5E69CE154E40B3005F3C15 /* GraphViewController.h */,
+				EB5E69CF154E40B3005F3C15 /* GraphViewController.m */,
 			);
 			name = Classes;
 			path = Robos;
@@ -555,6 +563,7 @@
 				EB1E831C154C260D00A8694F /* SimuladorViewController.xib in Resources */,
 				EBC1D0E5154D0D2600E9C13E /* CondicionalController.xib in Resources */,
 				EBC1D0E9154D10D500E9C13E /* Localizable.strings in Resources */,
+				EB5E69D2154E4C0C005F3C15 /* GraphViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +574,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB5E69D1154E41A8005F3C15 /* GraphViewController.m in Sources */,
 				EB2CCA94154B9D1500732540 /* ComandosOpcoesController.m in Sources */,
 				EB3FA2F913F9CB59009975E5 /* main.m in Sources */,
 				EB3FA2FC13F9CB59009975E5 /* RobosAppDelegate.m in Sources */,
