@@ -46,6 +46,7 @@
     
     self.navigationItem.title = NSLocalizedString(@"Compilador", nil);
     [botaoErros setTitle:NSLocalizedString(@"Corrigir Erros", nil)];
+    [botaoAvancar setTitle:NSLocalizedString(@"Avançar", nil)];
              
     [self checarErros];
 }

@@ -16,7 +16,7 @@
     
     NSInteger indexComandoExterno, indexComandoSucessor, indexComandoInterno, totalComandosExecutados, totalComandosParaPular;
     CGFloat progressoAtual, progressoAcrescimo, progressoComando;
-    BOOL dentroBloco, estadoSimulacao;
+    BOOL dentroBloco, estadoSimulacao, vivo;
     
     CGPoint pontoAtual;
 }
@@ -107,9 +107,9 @@
     NSMutableArray *valores = [[NSMutableArray alloc] initWithCapacity:quantidade];
     
     for (int i=0; i<quantidade; i++) {
-        int a = arc4random() % 3;
+        int a = arc4random() % 7;
 
-        if (a < 2) { // 66% chance
+        if (a < 4) { // 4/7 chance
             [valores addObject:[NSNumber numberWithBool:YES]];
             [[labels objectAtIndex:i] setText:NSLocalizedString(@"Ativado", nil)];
         } else {
@@ -207,8 +207,9 @@
         // dessa forma o código nunca encontra comandos SENAO ou ENTAO (pq eles já terão sido analisados).
     } else if (comando == COMANDO_SE) {
         
-        BOOL vivo = YES;
-        indexComandoSucessor = 1;
+        vivo = YES;
+        indexComandoSucessor = 0;
+        totalComandosParaPular = 0;
         indexParaBusca = indexComandoExterno;
         
         // Vamos analisar todos as cláusulas até encontrar uma que não seja condicional
@@ -227,10 +228,10 @@
                     //if (NO) {
                     if (estadoAleatorio == estadoSensor) {
                         dentroBloco = YES;
-                        indexComandoExterno++; 
+                        vivo = NO;
+                        indexComandoSucessor++;
                         indexComandoInterno = 0;
                         totalComandosExecutados++;
-                        vivo = NO;
                         
                         [objetoComandoCondicional setValue:[NSNumber numberWithBool:YES] forKey:SIMULADOR_CONDICIONAL_ESTADO];
                     } else {
