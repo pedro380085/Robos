@@ -173,6 +173,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    // A sentença dentro do if abaixo NÃO representa a última seção da tabela
     if (section+1 != [tableView numberOfSections]) {
         return 2;
     } else {
@@ -189,6 +190,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier];
     }
 
+    // A sentença dentro do if abaixo NÃO representa a última seção da tabela
     if (indexPath.section+1 != [tableView numberOfSections]) {
         if (indexPath.row == 0) {
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -233,6 +235,7 @@
     NSArray * v = [[NSArray alloc] initWithObjects:NSLocalizedString(@"Condição", nil), NSLocalizedString(@"Comandos internos", nil), nil];
     NSString * key;
     
+    // A sentença dentro do if abaixo NÃO representa a última seção da tabela
     if (section+1 != [tableView numberOfSections]) {
        key = [v objectAtIndex:section];
     } else {
@@ -247,7 +250,8 @@
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    // A sentença dentro do if abaixo NÃO representa a última seção da tabela
+    if (indexPath.section+1 != [tableView numberOfSections]) {
         return NO;
     } else {
         return YES;
@@ -271,16 +275,13 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Somente o último
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // A sentença dentro do if abaixo NÃO representa a última seção da tabela
     if (indexPath.section+1 != [tableView numberOfSections]) {
         if (indexPath.row == 0) {
             CaixaSensoresViewController *csvc = [[CaixaSensoresViewController alloc] initWithNibName:@"CaixaSensoresViewController" bundle:nil];
             csvc.delegate = self;
             [self.navigationController pushViewController:csvc animated:YES]; 
-        } else {
-            
         }
     } else {
         ComandosOpcoesController * coc = [[ComandosOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];

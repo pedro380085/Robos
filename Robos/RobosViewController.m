@@ -364,7 +364,7 @@
     NSMutableDictionary *dicionario;
     
     // Variáveis de controle
-    BOOL celulaSecundaria = NO;
+    //BOOL celulaSecundaria = NO;
     NSInteger indexInterno = 0, indexExterno = indexPath.row;
     
     // Procuramos a posição do nosso dicionário
@@ -391,32 +391,24 @@
         indexInterno = j;
         indexExterno = i;
         
-        if (j==0) {
-            dicionario = [comandos objectAtIndex:i];
-        } else {
-            dicionario = [[[comandos objectAtIndex:i] objectForKey: CONDICIONAL_ARRAY] objectAtIndex:(j-1)];
-            celulaSecundaria = YES;
-        }
-    
-    
+        dicionario = [comandos objectAtIndex:indexExterno];
         
     }
     
-    if (!celulaSecundaria) {
-        // Verificamos o valor da chave CONDICIONAL e, caso seja YES, puxamos o CondicionalController, caso seja NO, puxamos o ComandosOpcoesController
-        if ([[[self.comandos objectAtIndex:indexExterno] objectForKey:CONDICIONAL] boolValue]) {
-            CondicionalController * cc = [[CondicionalController alloc] initWithNibName:@"CondicionalController" bundle:nil];
-            cc.info = dicionario;
-            cc.controller = self;
-            cc.title = NSLocalizedString(@"Condicional", nil);
-            [self.navigationController pushViewController:cc animated:YES];
-        } else {
-            ComandosOpcoesController * coc = [[ComandosOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
-            coc.info = dicionario;
-            coc.controller = self;
-            coc.title = NSLocalizedString(@"Comandos", nil);
-            [self.navigationController pushViewController:coc animated:YES];
-        }
+
+    // Verificamos o valor da chave CONDICIONAL e, caso seja YES, puxamos o CondicionalController, caso seja NO, puxamos o ComandosOpcoesController
+    if ([[[self.comandos objectAtIndex:indexExterno] objectForKey:CONDICIONAL] boolValue]) {
+        CondicionalController * cc = [[CondicionalController alloc] initWithNibName:@"CondicionalController" bundle:nil];
+        cc.info = dicionario;
+        cc.controller = self;
+        cc.title = NSLocalizedString(@"Condicional", nil);
+        [self.navigationController pushViewController:cc animated:YES];
+    } else {
+        ComandosOpcoesController * coc = [[ComandosOpcoesController alloc] initWithStyle:UITableViewStyleGrouped];
+        coc.info = dicionario;
+        coc.controller = self;
+        coc.title = NSLocalizedString(@"Comandos", nil);
+        [self.navigationController pushViewController:coc animated:YES];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

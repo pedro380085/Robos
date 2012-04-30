@@ -268,47 +268,8 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Robos/RobosViewController.m"
-         timestampString = "357359293.024443"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "393"
-         endingLineNumber = "393"
-         landmarkName = "-tableView:didSelectRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357461188.015933"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "221"
-         endingLineNumber = "221"
-         landmarkName = "-construindoRegistro"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357460194.637002"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "207"
-         endingLineNumber = "207"
-         landmarkName = "-construindoRegistro"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357461188.015933"
+         timestampString = "357517392.027548"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "223"
@@ -321,11 +282,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357461188.015933"
+         timestampString = "357517392.027548"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "218"
-         endingLineNumber = "218"
+         startingLineNumber = "209"
+         endingLineNumber = "209"
          landmarkName = "-construindoRegistro"
          landmarkType = "5">
       </FileBreakpoint>
@@ -334,37 +295,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357463803.933801"
+         timestampString = "357517392.027548"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "316"
-         endingLineNumber = "316"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357463803.933801"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "342"
-         endingLineNumber = "342"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357460194.637002"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "174"
-         endingLineNumber = "174"
+         startingLineNumber = "225"
+         endingLineNumber = "225"
          landmarkName = "-construindoRegistro"
          landmarkType = "5">
       </FileBreakpoint>
@@ -373,11 +308,63 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357460194.637002"
+         timestampString = "357517392.027548"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "173"
-         endingLineNumber = "173"
+         startingLineNumber = "220"
+         endingLineNumber = "220"
+         landmarkName = "-construindoRegistro"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Robos/SimuladorViewController.m"
+         timestampString = "357517392.027548"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "318"
+         endingLineNumber = "318"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Robos/SimuladorViewController.m"
+         timestampString = "357517392.027548"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "344"
+         endingLineNumber = "344"
+         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Robos/SimuladorViewController.m"
+         timestampString = "357517392.027548"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "176"
+         endingLineNumber = "176"
+         landmarkName = "-construindoRegistro"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Robos/SimuladorViewController.m"
+         timestampString = "357517392.027548"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "175"
+         endingLineNumber = "175"
          landmarkName = "-construindoRegistro"
          landmarkType = "5">
       </FileBreakpoint>
@@ -399,11 +386,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357461381.985017"
+         timestampString = "357517392.027548"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
+         startingLineNumber = "135"
+         endingLineNumber = "135"
          landmarkName = "-construindoRegistro"
          landmarkType = "5">
       </FileBreakpoint>
@@ -412,11 +399,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357461621.363247"
+         timestampString = "357517392.027548"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "128"
-         endingLineNumber = "128"
+         startingLineNumber = "130"
+         endingLineNumber = "130"
          landmarkName = "-construindoRegistro"
          landmarkType = "5">
       </FileBreakpoint>
@@ -425,11 +412,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Robos/SimuladorViewController.m"
-         timestampString = "357463803.933801"
+         timestampString = "357517392.027548"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "261"
-         endingLineNumber = "261"
+         startingLineNumber = "263"
+         endingLineNumber = "263"
          landmarkName = "-construindoRegistro"
          landmarkType = "5">
       </FileBreakpoint>

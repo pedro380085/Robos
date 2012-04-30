@@ -73,7 +73,9 @@
     [super viewDidAppear:animated];
     
     // E que comece a mágica :)
-    [self construindoRegistro];
+    if ([controller.comandos count] != 0) {
+        [self construindoRegistro];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
